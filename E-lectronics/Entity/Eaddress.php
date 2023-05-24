@@ -10,7 +10,7 @@ class Eaddress implements keyValues{
     private int $houseNumber;
 
     public function __construct(int $addressId, string $country, string $city, string $district,
-                                string $cap, string $street, int $houseNumber) {
+                                string $street, string $cap, int $houseNumber) {
         $this->addressId = $addressId;
         $this->country = $country;
         $this->city = $city;
@@ -31,7 +31,7 @@ class Eaddress implements keyValues{
     public function getDistrict(): string {
         return $this->district;
     }
-    public function Cap(): string {
+    public function getCap(): string {
         return $this->cap;
     }
     public function getStreet(): string {

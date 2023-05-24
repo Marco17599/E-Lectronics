@@ -6,6 +6,15 @@
     case smartphone;
     case wires;
     case other;
+
+    public static function getCaseFromString($string) : EArticlesTypology|null{
+      $returningCase = null;
+      foreach(EArticlesTypology::cases() as $category){
+         if($category->name == $string){
+            $returningCase = $category;
+         }
+      }return $returningCase;
+    }
  }
 
 

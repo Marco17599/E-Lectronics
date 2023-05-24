@@ -1,36 +1,37 @@
 <?php
 
-
-class Euser  {
+include_once "keyValues.php";
+class Euser implements keyValues {
     private string $userId;
-    private string $name;
+    private string $firstName;
     private string $lastName;
     private string $username;
     private string $email;
-    private string $password;
-    private string $nTelefono;
-    private string $dateOfBirth;
-    private Eaddress $userAddress;
+    private string $userPassword;
+    private string $phoneNumber;
+    private string $birthDayDate;
+    private Eaddress|null $userAddress;
     private  array $userReviews;
     private  array $userAcquisitions;
     private  array $userSales;
     
 
  
-    public function __construct(string $userId, string $name, string $lastName, string $username, string $email,
-                                string $password, string $nTelefono, string $dateOfBirth,
-                                Eaddress $userAddress, array $userReviews, array $userAcquisitions,
+	
+    public function __construct(string $userId, string $firstName, string $lastName, string $username, string $email,
+                                string $userPassword, string $phoneNumber, string $birthDayDate,
+                                Eaddress|null $userAddress, array $userReviews, array $userAcquisitions,
                                 array $userSales)
                             {
 
         $this->userId = $userId;                                
-        $this->name = $name;
+        $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->username = $username;
         $this->email= $email;
-        $this->password = $password;
-        $this->nTelefono = $nTelefono;
-        $this->dateOfBirth = $dateOfBirth;
+        $this->userPassword = $userPassword;
+        $this->phoneNumber = $phoneNumber;
+        $this->birthDayDate = $birthDayDate;
         $this->userAddress= $userAddress;
         $this->userReviews = $userReviews;
         $this->userAcquisitions = $userAcquisitions;
@@ -39,116 +40,66 @@ class Euser  {
 
     }
 
-    /**
-	 * @return string
+    
+
+	
+
+	
+
+	/**
+	 * @return 
 	 */
 	public function getUserId(): string {
 		return $this->userId;
 	}
-	
+
 	/**
-	 * @param string $userId 
+	 * @return 
 	 */
-	public function setUserId(string $userId) {
-		$this->userId = $userId;
+	public function getFirstName(): string {
+		return $this->firstName;
 	}
 
 	/**
-	 * @return string
-	 */
-	public function getName(): string {
-		return $this->name;
-	}
-	
-	/**
-	 * @param string $name 
-	 */
-	public function setName(string $name){
-		$this->name = $name;
-	}
-
-	/**
-	 * @return string
+	 * @return 
 	 */
 	public function getLastName(): string {
 		return $this->lastName;
 	}
-	
-	/**
-	 * @param string $lastName 
-	 */
-	public function setLastName(string $lastName){
-		$this->lastName = $lastName;
-	}
 
 	/**
-	 * @return string
+	 * @return 
 	 */
 	public function getUsername(): string {
 		return $this->username;
 	}
-	
-	/**
-	 * @param string $username 
-	 */
-	public function setUsername(string $username){
-		$this->username = $username;
-	}
 
 	/**
-	 * @return string
+	 * @return 
 	 */
 	public function getEmail(): string {
 		return $this->email;
 	}
-	
-	/**
-	 * @param string $email 
-	*/
-	public function setEmail(string $email) {
-		$this->email = $email;
-    }
 
 	/**
-	 * @return string
+	 * @return 
 	 */
-	public function getPassword(): string {
-		return $this->password;
-	}
-	
-	/**
-	 * @param string $password 
-	*/
-	public function setPassword(string $password) {
-		$this->password = $password;
+	public function getUserPassword(): string {
+		return $this->userPassword;
 	}
 
 	/**
-	 * @return string
+	 * @return 
 	 */
-	public function getNTelefono(): string {
-		return $this->nTelefono;
-	}
-	
-	/**
-	 * @param string $nTelefono 
-	 */
-	public function setNTelefono(string $nTelefono) {
-		$this->nTelefono = $nTelefono;
+	public function getPhoneNumber(): string {
+		return $this->phoneNumber;
 	}
 
 	/**
-	 * @return string
+	 * @return 
 	 */
-	public function getDateOfBirth(): string {
-		return $this->dateOfBirth;
-	}
-	
-	/**
-	 * @param string $dateOfBirth 
-	 */
-	public function setDateOfBirth(string $dateOfBirth) {
-		$this->dateOfBirth = $dateOfBirth;
+	public function getBirthDayDate(): string {
+		return $this->birthDayDate;
 	}
 
 	/**
@@ -157,65 +108,64 @@ class Euser  {
 	public function getUserAddress(): Eaddress {
 		return $this->userAddress;
 	}
-	
+
 	/**
 	 * @param Eaddress $userAddress 
+	 * @return self
 	 */
-	public function setUserAddress(Eaddress $userAddress) {
+	public function setUserAddress(Eaddress $userAddress): self {
 		$this->userAddress = $userAddress;
+		return $this;
 	}
 
 	/**
-	 * @return Ereview[]
-	 */
-	public function getUserReviews(): array {
-		return $this->userReviews;
-	}
-	
-	/**
-	 * @param Ereview[] $userReviews 
-	 */
-	public function setUserReviews(array $userReviews) {
-		$this->userReviews = $userReviews;
-	}
-
-	/**
-	 * @return Eitem[]
+	 * @return 
 	 */
 	public function getUserAcquisitions(): array {
 		return $this->userAcquisitions;
 	}
 	
 	/**
-	 * @param Eitem[] $userAcquisitions 
+	 * @param  $userAcquisitions 
+	 * @return self
 	 */
-	public function setUserAcquisitions(array $userAcquisitions) {
+	public function setUserAcquisitions(array $userAcquisitions): self {
 		$this->userAcquisitions = $userAcquisitions;
+		return $this;
 	}
 
 	/**
-	 * @return Eitem[]
+	 * @return 
 	 */
 	public function getUserSales(): array {
 		return $this->userSales;
 	}
 	
 	/**
-	 * @param Eitem[] $userSales 
+	 * @param  $userSales 
+	 * @return self
 	 */
-	public function setUserSales(array $userSales) {
+	public function setUserSales(array $userSales): self {
 		$this->userSales = $userSales;
+		return $this;
 	}
 
-	/*public function getKeysValues():array {
+	public function getKeysValues() : array {
 		$array = [];
 		foreach ($this as $key=>$value){
-			$array[$key] = $value;
+			if(!is_array($value) & !is_object($value) & !is_null($value)){
+			   $array[$key] = $value;
 			}
+		}
 			return $array;
-	}*/
 
-	
+	}
+
+	public function evaluatesKey() : string {
+		
+		$returningString = 'userId' . ' = '.$this->getUserId().'';
+		return $returningString;
+	}
 }
  
 

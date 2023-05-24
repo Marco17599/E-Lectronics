@@ -2,11 +2,12 @@
 include_once "keyValues.php";
 
 class EcreditCard implements keyValues{
+	 private string $cardNumber;
      private string $ownerName;
      private string $ownerLastName;
-     private string $cardNumber;
-     private string $expirationDate;
      private string $CCV;
+     private string $expirationDate;
+     
 	
 
      public function __construct(string $cardNumber, string $ownerName, string $ownerLastName,

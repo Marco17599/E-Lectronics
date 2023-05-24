@@ -1,18 +1,26 @@
 <?php
-class EpurchaseOrder {
+include_once "keyValues.php";
+require_once "../config/autoload.php";
+class EpurchaseOrder implements keyValues{
+	private int $purchaseOrderId;
+	private float $totalPrice;
+	private Euser $buyer;
+	private EcreditCard $paymentMethod;
+	private Eaddress $shippingAddress;
     private array $items;
-    private Euser $buyer;
-    private float $totalPrice;
-    private Eaddress $shippingAddres;
-    private EcreditCard $paymentMethod;
+    
+    
+    
+    
 
-    public function __construct(array $items, Euser $buyer, float $totalPrice,
-                                Eaddress $shippingAddress, EcreditCard $paymentMethod) 
-                                {
+    public function __construct(int $purchaseOrderId, float $totalPrice, Euser $buyer, 
+	                            EcreditCard $paymentMethod, Eaddress $shippingAddress, array $items) 
+                       		{
+		$this->purchaseOrderId = $purchaseOrderId;
         $this->items = $items;
         $this->buyer = $buyer;
         $this->totalPrice = $totalPrice;
-        $this->shippingAddres = $shippingAddress;
+        $this->shippingAddress = $shippingAddress;
         $this->paymentMethod = $paymentMethod;          
      }
 
@@ -63,15 +71,15 @@ class EpurchaseOrder {
 	/**
 	 * @return Eaddress
 	 */
-	public function getShippingAddres(): Eaddress {
-		return $this->shippingAddres;
+	public function getShippingAddress(): Eaddress {
+		return $this->shippingAddress;
 	}
 	
 	/**
-	 * @param Eaddress $shippingAddres 
+	 * @param Eaddress $shippingAddress 
 	 */
-	public function setShippingAddres(Eaddress $shippingAddres) {
-		$this->shippingAddres = $shippingAddres;
+	public function setShippingAddres(Eaddress $shippingAddress) {
+		$this->shippingAddress = $shippingAddress;
 	}
 
 	/**
@@ -87,8 +95,59 @@ class EpurchaseOrder {
 	public function setPaymentMethod(EcreditCard $paymentMethod) {
 		$this->paymentMethod = $paymentMethod;
 	}
+
+	/**
+	 * @return 
+	 */
+	public function getPurchaseOrderId(): int {
+		return $this->purchaseOrderId;
+	}
+	
+	/**
+	 * @param  $purchaseOrderId 
+	 * @return self
+	 */
+	public function setPurchaseOrderId(int $purchaseOrderId): self {
+		$this->purchaseOrderId = $purchaseOrderId;
+		return $this;
+	}
+
+	public function getKeysValues() : array {
+		$array = [];
+		foreach ($this as $key=>$value){
+			if(!is_array($value)){
+				if($key == "buyer"){
+					$key = "userId";
+					$value = $value->getUserId();
+				}if($key == "paymentMethod"){
+					$key = "cardNumber";
+					$value = $value->getCardNumber();
+				}
+				if($key == "shippingAddress"){
+					$key = "addressId";
+					$value = $value->getAddressId();
+				}
+			
+				$array[$key] = $value;
+			} 
+		}
+	    return $array;
+
+	}
+
+	public function evaluatesKey() : string {
+		
+		$returningString = 'purchaseOrderId' . ' = '.$this->getPurchaseOrderId().'';
+		return $returningString;
+	}
 }
+/*
+$temp1 =new Eaddress(1, "a", "b","c","d","e",11);
+$temp2 = new Euser(1,"marco","matt", "mamatt", "a@a.com", "aaaa", "33333333", "1999-05-17", null , [],[],[]);
+$temp3 = new EcreditCard("11111111111111", "Marco", "Maa", "123", "2025-12-12");
+$temp = new EpurchaseOrder(0,23.12,$temp2, $temp3, $temp1 , [] );
+print_r ($temp->getKeysValues());
 
-
+*/
 
 ?>

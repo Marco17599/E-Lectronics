@@ -32,8 +32,8 @@ $array_prova = [
 
 //$smarty->testInstall();
 
-$smarty->assign('array', $array_prova);
-$smarty->display('index.tpl');
+/*$smarty->assign('array', $array_prova);*/
+$smarty->display('item.tpl');
 
 
 ?>

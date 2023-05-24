@@ -3,15 +3,15 @@ CREATE DATABASE ELectronics;
 Use ELectronics;
 
 CREATE TABLE `User` (
-    UserId int NOT NULL AUTO_INCREMENT,
-    FirstName VARCHAR(50) NOT NULL,
-    LastName VARCHAR(50) NOT NULL,
-    Username VARCHAR(50) NOT NULL,
-    Email VARCHAR (100) NOT NULL,
-    UserPassword VARCHAR(16) NOT NULL,
-    PhoneNumber VARCHAR(15),
-    BirthDayDate Date NOT NULL,
-    PRIMARY KEY(UserId)  
+    userId int NOT NULL AUTO_INCREMENT,
+    firstName VARCHAR(50) NOT NULL,
+    lastName VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR (100) NOT NULL,
+    userPassword VARCHAR(16) NOT NULL,
+    phoneNumber VARCHAR(15),
+    birthDayDate Date NOT NULL,
+    PRIMARY KEY(userId)  
 );
 
 CREATE TABLE `CreditCard` (
@@ -20,7 +20,7 @@ CREATE TABLE `CreditCard` (
     ownerLastName VARCHAR(50) NOT NULL,
     CCV int(4) NOT NULL,
     expirationDate Date NOT NULL,
-    PRIMARY KEY (CardNumber)
+    PRIMARY KEY (cardNumber)
     
 );
 
@@ -38,43 +38,43 @@ CREATE TABLE `Address` (
 );
 
 CREATE TABLE `PurchaseOrder` (
-    PurchaseOrderId int NOT NULL AUTO_INCREMENT, 
-    TotalPrice decimal(19,4) NOT NULL,
-    UserId int,
+    purchaseOrderId int NOT NULL AUTO_INCREMENT, 
+    totalPrice decimal(19,4) NOT NULL,
+    userId int,
     cardNumber VARCHAR(16) NOT NULL,
     addressId int,
-    PRIMARY KEY (PurchaseOrderId),
-    CONSTRAINT FK_UserPurchaseOrder FOREIGN KEY (UserId) REFERENCES User (UserId),
+    PRIMARY KEY (purchaseOrderId),
+    CONSTRAINT FK_UserPurchaseOrder FOREIGN KEY (userId) REFERENCES User (userId),
     CONSTRAINT FK_CreditCardPurchaseOrder FOREIGN KEY (cardNumber) REFERENCES CreditCard( cardNumber),
     CONSTRAINT FK_AddressPurchaseOrder FOREIGN KEY (addressId) REFERENCES Address (addressId) 
    
 );
 
 CREATE TABLE `Item` (
-    ItemId int NOT NULL AUTO_INCREMENT,
-    ItemName VARCHAR(100) NOT NULL,
-    ItemDescription TEXT,
-    ItemPrice decimal(19,4) NOT NULL,
-    IsSold bit NOT NULL,
-    Category ENUM('computer', 'videogames', 'console', 'smartphone', 'wires', 'others' ),
-    Seller int,
-    Buyer int,
-    PurchaseOrderId int,
-    PRIMARY KEY (ItemId),
-    CONSTRAINT FK_SellerItem FOREIGN KEY (Seller) REFERENCES User (UserId),
-    CONSTRAINT FK_BuyerItem FOREIGN KEY (Buyer) REFERENCES User (UserId),
-    CONSTRAINT FK_PurchaseOrderItem FOREIGN KEY (PurchaseOrderId) REFERENCES PurchaseOrder (PurchaseOrderId)
+    itemId int NOT NULL AUTO_INCREMENT,
+    itemName VARCHAR(100) NOT NULL,
+    itemDescription TEXT,
+    itemPrice decimal(19,4) NOT NULL,
+    isSold tinyint(1) NOT NULL default 0,
+    category ENUM('computer', 'videogames', 'console', 'smartphone', 'wires', 'others' ),
+    seller int,
+    buyer int,
+    purchaseOrderId int,
+    PRIMARY KEY (itemId),
+    CONSTRAINT FK_SellerItem FOREIGN KEY (seller) REFERENCES User (userId),
+    CONSTRAINT FK_BuyerItem FOREIGN KEY (buyer) REFERENCES User (userId),
+    CONSTRAINT FK_PurchaseOrderItem FOREIGN KEY (purchaseOrderId) REFERENCES PurchaseOrder (purchaseOrderId)
 );
 
 CREATE TABLE `Review` (
-    ReviewId int NOT NULL AUTO_INCREMENT,
-    Vote int(2) NOT NULL,
-    TextOfReview TEXT,
-    Reviewer int,
-    Reviewed int,
-    PRIMARY KEY (ReviewId),
-    CONSTRAINT FK_UserReview_1 FOREIGN KEY (Reviewer) REFERENCES User (UserId),
-    CONSTRAINT FK_UserReview_2 FOREIGN KEY (Reviewed) REFERENCES User (UserId)
+    reviewId int NOT NULL AUTO_INCREMENT,
+    vote int(2) NOT NULL,
+    textOfReview TEXT,
+    reviewer int,
+    reviewed int,
+    PRIMARY KEY (reviewId),
+    CONSTRAINT FK_UserReview_1 FOREIGN KEY (reviewer) REFERENCES User (userId),
+    CONSTRAINT FK_UserReview_2 FOREIGN KEY (reviewed) REFERENCES User (userId)
 ); 
 
 

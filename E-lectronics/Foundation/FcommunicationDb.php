@@ -1,12 +1,15 @@
 <?php
 require_once "../Entity/keyValues.php";
+require_once "../Foundation/FconnectionDb.php";
 require_once "../Entity/Eaddress.php";
-require_once "FconnectionDb.php";
 
-class FcommunicationDb {
+//require_once "../config/autoload.php";
+
+
+abstract class FcommunicationDb {
    
-    function store(string $table, keyValues $object) {
-        $pdo = FConnectionDB::getInstance()->getPdo();
+   function store(string $table, keyValues $object) {
+        $pdo = FconnectionDb::getInstance()->getPdo();
         $fields =[];
         $values =[];
         foreach($object->getKeysValues() as $key => $value) {
@@ -37,7 +40,7 @@ class FcommunicationDb {
         return $returningString;
     }
 
-   protected function update (string $table, keyValues $object ) {
+    function update (string $table, keyValues $object ) {
         $pdo = FConnectionDB::getInstance()->getPdo();
         $query='UPDATE `'.$table.'` SET '.$this->setConditonForSqlUpdate($object).' WHERE '.$object->evaluatesKey().'';
         print($query);
@@ -59,20 +62,20 @@ class FcommunicationDb {
     }
 
     function load(string $table, string $key, string $keyValue, string $nameObject):object|null{
-        $pdo = FConnectionDB::getInstance()->getPdo();
+        $pdo = FconnectionDb::getInstance()->getPdo();
         $query='SELECT * FROM`'.$table.'` WHERE '.$key.' =  \''.$keyValue.'\'';
         $objectAttributes  = (array) $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC)[0];
         $returningObject = $pdo->query($query)->fetchObject($nameObject,$objectAttributes);
         return ($returningObject !=false) ?  $returningObject : null;
     }
 
-    function exist(string $table, string $key, string $keyValue) : bool {
+     function exist(string $table, keyValues $object) : bool {
         $pdo = FConnectionDB::getInstance()->getPdo();
-        $query='SELECT * FROM`'.$table.'` WHERE '.$key.' =  \''.$keyValue.'\'';
+        $query='SELECT * FROM`'.$table.'` WHERE '.$object->evaluatesKey().'';
         return  ($pdo->query($query)->rowCount() > 0) ? true : false;
     }
 
-    function delete(string $table, keyValues $object) {
+     function delete(string $table, keyValues $object) {
         $pdo = FConnectionDB::getInstance()->getPdo();
         $query='DELETE FROM`'.$table.'` WHERE '.$object->evaluatesKey().'';
         $pdo->prepare($query)->execute();
@@ -80,11 +83,16 @@ class FcommunicationDb {
     
    
 }
-$temp = new Eaddress(0,"Italy", "Rieti" , "RI", "02100","via boh", 3);
+
+/*$temp = new Eitem("0", "iPhone", "buone condizioni", 32, true , EArticlesTypology::smartphone, null);
 $var = new FcommunicationDb();
-$var->store("Address", $temp);
-$temp_1 = $var->load("Address", "addressId", "7", "Eaddress");
-print($temp_1->getAddressId());
+$var->store("Item", $temp);*/
+/*$temp_1 = $var->load("Item", "itemId", "2", "Eitem");
+print($temp_1->getItemPrice());*/
+
+
+
+
 
  
 
