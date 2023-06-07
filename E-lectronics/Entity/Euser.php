@@ -10,7 +10,7 @@ class Euser implements keyValues {
     private string $userPassword;
     private string $phoneNumber;
     private string $birthDayDate;
-    private Eaddress|null $userAddress;
+    private Eaddress $userAddress;
     private  array $userReviews;
     private  array $userAcquisitions;
     private  array $userSales;
@@ -20,7 +20,7 @@ class Euser implements keyValues {
 	
     public function __construct(string $userId, string $firstName, string $lastName, string $username, string $email,
                                 string $userPassword, string $phoneNumber, string $birthDayDate,
-                                Eaddress|null $userAddress, array $userReviews, array $userAcquisitions,
+                                Eaddress $userAddress, array $userReviews, array $userAcquisitions,
                                 array $userSales)
                             {
 
@@ -149,6 +149,18 @@ class Euser implements keyValues {
 		$this->userSales = $userSales;
 		return $this;
 	}
+
+	public function AverageReviews():float {
+	$rv= $this->userReviews;
+	$review_count = count($rv);
+	$res = 0;
+    foreach ($rv as $n) {
+            $res += $n;
+    }
+	$a = $res/$review_count;
+	printf($a);
+	return $a;
+    }
 
 	public function getKeysValues() : array {
 		$array = [];

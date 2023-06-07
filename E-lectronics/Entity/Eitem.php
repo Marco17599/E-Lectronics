@@ -8,14 +8,14 @@ class Eitem implements keyValues{
     private float $itemPrice;
 	private bool $isSold;
 	private EArticlesTypology $category;
-    private Euser|null $seller;
+    private Euser $seller;
     
     
     
 
     public function __construct(string $itemId, string $itemName, string $itemDescription,
 	                            float $itemPrice,  bool $isSold,  $category,
-                                Euser|null $seller  ) 
+                                Euser $seller  ) 
                                  {
 
         $this->itemId = $itemId;
