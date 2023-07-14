@@ -1,7 +1,6 @@
 <?php
 
-require_once "FcommunicationDb.php";
-require_once "../config/autoload.php";
+
 
 class FcreditCard extends FcommunicationDb {
 

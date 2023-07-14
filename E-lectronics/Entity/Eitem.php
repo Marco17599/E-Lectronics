@@ -1,21 +1,21 @@
 <?php
-include_once "keyValues.php";
-include_once "EArticolesTypology.php";
-class Eitem implements keyValues{
+require_once 'EArticlesTypology.php';
+class Eitem implements EkeyValues{
     private string $itemId;
     private string $itemName;
 	private string $itemDescription;
     private float $itemPrice;
 	private bool $isSold;
 	private EArticlesTypology $category;
-    private Euser|null $seller;
+	private $image;
+    private Euser $seller;
     
     
     
 
     public function __construct(string $itemId, string $itemName, string $itemDescription,
-	                            float $itemPrice,  bool $isSold,  $category,
-                                Euser|null $seller  ) 
+	                            float $itemPrice,  bool $isSold,  $category, $image,
+                                Euser $seller  ) 
                                  {
 
         $this->itemId = $itemId;
@@ -26,6 +26,8 @@ class Eitem implements keyValues{
 	    $this->isSold = $isSold; 
 		
         $this->category = $category;
+		$this->image = $image;
+		$this->seller = $seller;
                                    
     }
 
@@ -142,10 +144,26 @@ class Eitem implements keyValues{
 
 	public function evaluatesKey() : string {
 		
-		$returningString = 'itemId' . ' = '.$this->getItemId().'';
+		$returningString = 'itemId' . ' = \''.$this->getItemId().'\'';
 		return $returningString;
 	}
 
+
+	/**
+	 * @return mixed
+	 */
+	public function getImage() {
+		return $this->image;
+	}
+
+	/**
+	 * @param mixed $image 
+	 * @return self
+	 */
+	public function setImage($image): self {
+		$this->image = $image;
+		return $this;
+	}
 }
 
 

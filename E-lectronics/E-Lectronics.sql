@@ -57,6 +57,7 @@ CREATE TABLE `Item` (
     itemPrice decimal(19,4) NOT NULL,
     isSold tinyint(1) NOT NULL default 0,
     category ENUM('computer', 'videogames', 'console', 'smartphone', 'wires', 'others' ),
+    `image` longblob NOT NULL,
     seller int,
     buyer int,
     purchaseOrderId int,

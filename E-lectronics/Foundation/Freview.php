@@ -1,7 +1,6 @@
 <?php
 
-require_once "FcommunicationDb.php";
-require_once "../config/autoload.php";
+
 
 class Freview extends FcommunicationDb {
 
@@ -23,6 +22,7 @@ class Freview extends FcommunicationDb {
         $pdo = FconnectionDb::getInstance()->getPdo();
         $query='SELECT * FROM `Review` WHERE reviewed =  \''.$reviewedId.'\'';
         $objectAttributes  = (array) $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        
         foreach($objectAttributes as $review) {
             $fUser = new Fuser();
             $reviewer = $fUser->load("User", "userId", $review["reviewer"], "Euser");
@@ -30,6 +30,7 @@ class Freview extends FcommunicationDb {
             array_push($returningReviews, new Ereview($review["reviewId"], $review["vote"], 
                                                       $review["textOfReview"], $reviewer, $reviewed));
         }return $returningReviews;
+   
 
     }
     

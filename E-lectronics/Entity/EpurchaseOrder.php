@@ -1,7 +1,6 @@
 <?php
-include_once "keyValues.php";
-require_once "../config/autoload.php";
-class EpurchaseOrder implements keyValues{
+
+class EpurchaseOrder implements EkeyValues{
 	private int $purchaseOrderId;
 	private float $totalPrice;
 	private Euser $buyer;
@@ -137,7 +136,7 @@ class EpurchaseOrder implements keyValues{
 
 	public function evaluatesKey() : string {
 		
-		$returningString = 'purchaseOrderId' . ' = '.$this->getPurchaseOrderId().'';
+		$returningString = 'purchaseOrderId' . ' = \''.$this->getPurchaseOrderId().'\'';
 		return $returningString;
 	}
 }

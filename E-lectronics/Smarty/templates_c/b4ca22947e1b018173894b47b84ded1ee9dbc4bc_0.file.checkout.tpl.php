@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-05-19 02:25:11
+/* Smarty version 4.3.1, created on 2023-07-14 03:06:20
   from '/home/marco/public_html/E-lectronics/Smarty/templates/checkout.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_6466c1e7da1f58_40578852',
+  'unifunc' => 'content_64b09f8c953b15_47684963',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b4ca22947e1b018173894b47b84ded1ee9dbc4bc' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/checkout.tpl',
-      1 => 1684455117,
+      1 => 1689296779,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6466c1e7da1f58_40578852 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64b09f8c953b15_47684963 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
+ <base href="http://localhost/~marco/E-lectronics/"   >
+
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,57 +75,43 @@ function content_6466c1e7da1f58_40578852 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="main-menu-wrap">
 						<!-- logo -->
 						<div class="site-logo">
-							<a href="index.html">
-								<img src="Smarty/images/provalogo.png" alt="">
-							</a>
+							<img src="Smarty/images/logo.png" alt="">
 						</div>
 						<!-- logo -->
 
-						<!-- menu start -->
+					  <!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="#">Home</a>
-									<ul class="sub-menu">
-										<li><a href="index.html">Static Home</a></li>
-										<li><a href="index_2.html">Slider Home</a></li>
-									</ul>
+								<li ><a href="">Home</a>
 								</li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="#">Pages</a>
-									<ul class="sub-menu">
-										<li><a href="404.html">404 page</a></li>
-										<li><a href="about.html">About</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="contact.html">Contact</a></li>
-										<li><a href="news.html">News</a></li>
-										<li><a href="shop.html">Shop</a></li>
-									</ul>
+
+								<li><a href="About">About</a></li>
+
+								<li>
+								<?php if ($_smarty_tpl->tpl_vars['isIdentified']->value == true) {?>
+								<a href="Profile"><i class="fas fa-solid fa-user"></i></a>
+								<?php } else { ?>
+								<a href="Login">Login</a>
+								<?php }?>
 								</li>
-								<li><a href="news.html">News</a>
-									<ul class="sub-menu">
-										<li><a href="news.html">News</a></li>
-										<li><a href="single-news.html">Single News</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact</a></li>
-								<li><a href="shop.html">Shop</a>
-									<ul class="sub-menu">
-										<li><a href="shop.html">Shop</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="single-product.html">Single Product</a></li>
-										<li><a href="cart.html">Cart</a></li>
-									</ul>
+									
+								
+								
+								<li><a href="Sell">Sell</a></li>
+								<li><a href="Items">Shop</a>
+									
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+										<ul>
+										<li class="current-list-item"><a class="shopping-cart"  href="Cart"><i class="fas fa-shopping-cart"></i></a></li>
+										<li><a class="mobile-hide search-bar-icon" ><i class="fas fa-search"></i></a></li>
+										</ul>
 									</div>
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+						<a class="mobile-show search-bar-icon" href=""><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>
@@ -132,7 +120,7 @@ function content_6466c1e7da1f58_40578852 (Smarty_Internal_Template $_smarty_tpl)
 		</div>
 	</div>
 	<!-- end header -->
-
+	
 	<!-- search area -->
 	<div class="search-area">
 		<div class="container">
@@ -142,15 +130,20 @@ function content_6466c1e7da1f58_40578852 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="search-bar">
 						<div class="search-bar-tablecell">
 							<h3>Search For:</h3>
-							<input type="text" placeholder="Keywords">
-							<button type="submit">Search <i class="fas fa-search"></i></button>
+							<input type="text" placeholder="Keywords" id="searchh">
+							
+							<button type="submit" onclick="Search()" >
+							Search <i class="fas fa-search"></i></button>
+							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- end search arewa -->
+	<!-- end search area -->
+
+								 
 	
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -158,8 +151,8 @@ function content_6466c1e7da1f58_40578852 (Smarty_Internal_Template $_smarty_tpl)
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Fresh and Organic</p>
-						<h1>Check Out Product</h1>
+						<p>Order recap</p>
+						<h1>Check Out </h1>
 					</div>
 				</div>
 			</div>
@@ -178,7 +171,7 @@ function content_6466c1e7da1f58_40578852 (Smarty_Internal_Template $_smarty_tpl)
 						    <div class="card-header" id="headingOne">
 						      <h5 class="mb-0">
 						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						          Billing Address
+						          Shipping Informations
 						        </button>
 						      </h5>
 						    </div>
@@ -186,49 +179,33 @@ function content_6466c1e7da1f58_40578852 (Smarty_Internal_Template $_smarty_tpl)
 						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 						      <div class="card-body">
 						        <div class="billing-address-form">
-						        	<form action="index.html">
-						        		<p><input type="text" placeholder="Name"></p>
-						        		<p><input type="email" placeholder="Email"></p>
-						        		<p><input type="text" placeholder="Address"></p>
-						        		<p><input type="tel" placeholder="Phone"></p>
-						        		<p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p>
+						        	<form name = "shipping" method= "POST" id= "shipping-form">
+						        		
+										<p>Address </p>
+                                        <p><input type="text" placeholder="country"></p>
+						        		<p><input type="text" placeholder="city"></p>
+						        		<p><input type="text" placeholder="district"></p>
+                                        <p><input type="text" placeholder="street"></p>
+						        		<p><input type="text" placeholder="number"></p>
+						        		<p><input type="text" placeholder="cap"></p>
+
+						        	
+						        		<p>Card details </p>
+						        		
+										<p><input type="text" placeholder="cardNumber"></p>
+						        		<p><input type="email" placeholder="ownerName"></p>
+						        		<p><input type="text" placeholder="ownerLastName"></p>
+						        		<p><input type="text" placeholder="CCV"></p>
+										<p><input type="date" placeholder="expirationDate"></p>
+						        		
 						        	</form>
 						        </div>
 						      </div>
 						    </div>
 						  </div>
-						  <div class="card single-accordion">
-						    <div class="card-header" id="headingTwo">
-						      <h5 class="mb-0">
-						        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-						          Shipping Address
-						        </button>
-						      </h5>
-						    </div>
-						    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-						      <div class="card-body">
-						        <div class="shipping-address-form">
-						        	<p>Your shipping address form is here.</p>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
-						  <div class="card single-accordion">
-						    <div class="card-header" id="headingThree">
-						      <h5 class="mb-0">
-						        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-						          Card Details
-						        </button>
-						      </h5>
-						    </div>
-						    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-						      <div class="card-body">
-						        <div class="card-details">
-						        	<p>Your card details goes here.</p>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
+						   
+						   
+						 
 						</div>
 
 					</div>
@@ -248,35 +225,58 @@ function content_6466c1e7da1f58_40578852 (Smarty_Internal_Template $_smarty_tpl)
 									<td>Product</td>
 									<td>Total</td>
 								</tr>
+
+								<?php
+$__section_recap_0_loop = (is_array(@$_loop=$_smarty_tpl->tpl_vars['cart']->value) ? count($_loop) : max(0, (int) $_loop));
+$__section_recap_0_total = $__section_recap_0_loop;
+$_smarty_tpl->tpl_vars['__smarty_section_recap'] = new Smarty_Variable(array());
+if ($__section_recap_0_total !== 0) {
+for ($__section_recap_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_recap']->value['index'] = 0; $__section_recap_0_iteration <= $__section_recap_0_total; $__section_recap_0_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_recap']->value['index']++){
+?>
 								<tr>
-									<td>Strawberry</td>
-									<td>$85.00</td>
+									<td><?php echo $_smarty_tpl->tpl_vars['cart']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_recap']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_recap']->value['index'] : null)]->getItemName();?>
+</td>
+									<td>$<?php echo $_smarty_tpl->tpl_vars['cart']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_recap']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_recap']->value['index'] : null)]->getItemPrice();?>
+</td>
 								</tr>
-								<tr>
-									<td>Berry</td>
-									<td>$70.00</td>
-								</tr>
-								<tr>
-									<td>Lemon</td>
-									<td>$35.00</td>
-								</tr>
+								<?php
+}
+}
+?>
+								
 							</tbody>
 							<tbody class="checkout-details">
 								<tr>
 									<td>Subtotal</td>
-									<td>$190</td>
+									<td>$<?php echo $_smarty_tpl->tpl_vars['totalPrice']->value;?>
+</td>
 								</tr>
 								<tr>
+								<?php if ($_smarty_tpl->tpl_vars['totalPrice']->value > 100) {?> 
+								    <td>Shipping</td>
+									<td>$0</td>
+									<?php } else { ?>
 									<td>Shipping</td>
-									<td>$50</td>
+									<td>$20</td>
+									<?php }?>
 								</tr>
 								<tr>
+								<?php if ($_smarty_tpl->tpl_vars['totalPrice']->value > 100) {?> 
+
+								   <td>Total</td>
+									<td>$<?php echo $_smarty_tpl->tpl_vars['totalPrice']->value;?>
+</td>
+									<?php } else { ?>
+
 									<td>Total</td>
-									<td>$240</td>
+									<td>$<?php echo $_smarty_tpl->tpl_vars['totalPrice']->value+20;?>
+</td>
+
+									<?php }?>
 								</tr>
 							</tbody>
 						</table>
-						<a href="#" class="boxed-btn">Place Order</a>
+						<input type="submit" form = "shipping-form" value = "Place Order" name = "shipping" style="margin-top:15px;">
 					</div>
 				</div>
 			</div>
@@ -286,49 +286,30 @@ function content_6466c1e7da1f58_40578852 (Smarty_Internal_Template $_smarty_tpl)
 
 	<!-- logo carousel -->
 	<div class="logo-carousel-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="logo-carousel-inner">
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/1.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/2.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/3.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/4.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/5.png" alt="">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 	</div>
 	<!-- end logo carousel -->
 
-	<!-- footer -->
+	 <!-- footer -->
 	<div class="footer-area">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-box about-widget">
 						<h2 class="widget-title">About us</h2>
-						<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+						<p>We are two Information Engineering students Marco Matteucci and Federico D'Alesio.
+						We created this web application for a project in order to learn and apply the Web Development concepts and techniques.</p>
+
+                            
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-box get-in-touch">
 						<h2 class="widget-title">Get in Touch</h2>
 						<ul>
-							<li>34/8, East Hukupara, Gifirtok, Sadan.</li>
-							<li>support@fruitkha.com</li>
-							<li>+00 111 222 3333</li>
+							<li>??/?, Via ?, ?, ?.</li>
+							<li>support@E-lectronics.gmail.com</li>
+							<li>+39 111 222 3333</li>
 						</ul>
 					</div>
 				</div>
@@ -336,11 +317,11 @@ function content_6466c1e7da1f58_40578852 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="services.html">Shop</a></li>
-							<li><a href="news.html">News</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="">Home</a></li>
+							<li><a href="About">About</a></li>
+							<li><a href="Login">Login</a></li>
+							<li><a href="Sell">Sell</a></li>
+							<li><a href="Items">Shop</a></li>
 						</ul>
 					</div>
 				</div>
@@ -369,11 +350,11 @@ function content_6466c1e7da1f58_40578852 (Smarty_Internal_Template $_smarty_tpl)
 				<div class="col-lg-6 text-right col-md-12">
 					<div class="social-icons">
 						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-instagram"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-dribbble"></i></a></li>
 						</ul>
 					</div>
 				</div>

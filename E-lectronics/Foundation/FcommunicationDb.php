@@ -1,14 +1,12 @@
 <?php
-require_once "../Entity/keyValues.php";
-require_once "../Foundation/FconnectionDb.php";
-require_once "../Entity/Eaddress.php";
+
 
 //require_once "../config/autoload.php";
 
 
 abstract class FcommunicationDb {
    
-   function store(string $table, keyValues $object) {
+   function store(string $table, EkeyValues $object) {
         $pdo = FconnectionDb::getInstance()->getPdo();
         $fields =[];
         $values =[];
@@ -18,8 +16,8 @@ abstract class FcommunicationDb {
         }
         $sql= "INSERT INTO $table (" . $this->arrayToFieldsForSqlQueries($fields) . ") VALUES 
         (" . $this->arrayToValuesForSqlQueries($values) . ")"; 
-        print($sql);
         $pdo->prepare($sql)->execute();
+        print($sql);
         
     }
 
@@ -40,14 +38,13 @@ abstract class FcommunicationDb {
         return $returningString;
     }
 
-    function update (string $table, keyValues $object ) {
-        $pdo = FConnectionDB::getInstance()->getPdo();
+    function update (string $table, EkeyValues $object ) {
+        $pdo = FconnectionDb::getInstance()->getPdo();
         $query='UPDATE `'.$table.'` SET '.$this->setConditonForSqlUpdate($object).' WHERE '.$object->evaluatesKey().'';
-        print($query);
         $pdo->prepare($query)->execute();
     }
 
-    private function setConditonForSqlUpdate(keyValues $object) : string {
+    private function setConditonForSqlUpdate(EkeyValues $object) : string {
         $returningString="";
         $counter = 0;
         foreach ($object->getKeysValues() as $key => $value) {
@@ -69,14 +66,17 @@ abstract class FcommunicationDb {
         return ($returningObject !=false) ?  $returningObject : null;
     }
 
-     function exist(string $table, keyValues $object) : bool {
-        $pdo = FConnectionDB::getInstance()->getPdo();
-        $query='SELECT * FROM`'.$table.'` WHERE '.$object->evaluatesKey().'';
+     function exist(string $table, string $key, string $keyValue) : bool {
+        $pdo = FconnectionDb::getInstance()->getPdo();
+        $query='SELECT * FROM`'.$table.'` WHERE '.$key.' = \''.$keyValue.'\'';
+        $pdo->prepare($query)->execute();
         return  ($pdo->query($query)->rowCount() > 0) ? true : false;
+      
+       
     }
 
-     function delete(string $table, keyValues $object) {
-        $pdo = FConnectionDB::getInstance()->getPdo();
+     function delete(string $table, EkeyValues $object) {
+        $pdo = FconnectionDb::getInstance()->getPdo();
         $query='DELETE FROM`'.$table.'` WHERE '.$object->evaluatesKey().'';
         $pdo->prepare($query)->execute();
     }

@@ -1,15 +1,16 @@
 <?php
 
-require_once "FcommunicationDb.php";
-require_once "../config/autoload.php";
+
 
 class Faddress extends FcommunicationDb {
-    function loadUserAddress(string $userId) {
+    function loadUserAddress(string $userId) :object|null {
         $pdo = FconnectionDb::getInstance()->getPdo();
         $query='SELECT * FROM `Address` WHERE `userId` =  \''.$userId.'\'';
         $objectAttributes  = (array) $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC)[0];
         $returningObject = $pdo->query($query)->fetchObject("Eaddress",$objectAttributes);
         return ($returningObject !=false) ?  $returningObject : null;
+    
+    
     }
 }
 /*

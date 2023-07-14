@@ -1,7 +1,7 @@
 <?php
-include_once "keyValues.php";
 
-class EcreditCard implements keyValues{
+
+class EcreditCard implements EkeyValues{
 	 private string $cardNumber;
      private string $ownerName;
      private string $ownerLastName;
@@ -102,7 +102,7 @@ class EcreditCard implements keyValues{
 
 	public function evaluatesKey() : string {
 		
-		$returningString = 'cardNumber' . ' = '.$this->getCardNumber().'';
+		$returningString = 'cardNumber' . ' = \''.$this->getCardNumber().'\'';
 		return $returningString;
 	}
 	

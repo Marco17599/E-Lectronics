@@ -1,6 +1,6 @@
 <?php
-include_once "keyValues.php";
-class Eaddress implements keyValues{
+
+class Eaddress implements EkeyValues{
     private int $addressId;
     private string $country;
     private string $city;
@@ -56,7 +56,8 @@ class Eaddress implements keyValues{
 
 	public function evaluatesKey() : string {
 		
-		$returningString = 'addressId' . ' = '.$this->getAddressId().'';
+		$returningString = '`addressId`' . ' = \''.$this->getAddressId().'\'';
+       
 		return $returningString;
 	}
 

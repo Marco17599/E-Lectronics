@@ -1,7 +1,7 @@
 <?php
 
-include_once "keyValues.php";
-class Euser implements keyValues {
+
+class Euser implements EkeyValues {
     private string $userId;
     private string $firstName;
     private string $lastName;
@@ -163,7 +163,7 @@ class Euser implements keyValues {
 
 	public function evaluatesKey() : string {
 		
-		$returningString = 'userId' . ' = '.$this->getUserId().'';
+		$returningString = 'userId' . ' = \''.$this->getUserId().'\'';
 		return $returningString;
 	}
 }

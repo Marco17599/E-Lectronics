@@ -1,7 +1,7 @@
 <?php
-require_once "FcommunicationDb.php";
-require_once "../config/autoload.php";
-require_once "../Entity/EArticolesTypology.php";
+//require_once '../Entity/EArticolesTypology.php';
+/*require_once 'FconnectionDb.php';
+require_once 'FcommunicationDb.php';*/
 
 class Fitem extends FcommunicationDb {
     public function load(string $table, string $key, string $keyValue, string $nameObject) :object|null {
@@ -13,8 +13,11 @@ class Fitem extends FcommunicationDb {
         $category = EArticlesTypology::getCaseFromString($objectAttributes["category"]);
         $returningItem = new Eitem($objectAttributes["itemId"],$objectAttributes["itemName"],
                                    $objectAttributes["itemDescription"],$objectAttributes["itemPrice"],
-                                   $objectAttributes["isSold"],$category, $seller);
-                                   return $returningItem;
+                                   $objectAttributes["isSold"],$category, base64_encode($objectAttributes["image"] ) , $seller);
+                                   if (is_null($returningItem)){
+                                    return null;
+                                   }else return $returningItem;
+                                   
     }
 
     public function loadAllUnsoldItems() :array  {
@@ -22,13 +25,15 @@ class Fitem extends FcommunicationDb {
         $pdo = FconnectionDb::getInstance()->getPdo();
         $query='SELECT * FROM `Item` WHERE isSold =  false';
         $objectAttributes  = (array) $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        //print_r($objectAttributes);
+        //print(base64_encode($objectAttributes["image"]));
         foreach($objectAttributes as $item) {
             $fUser = new Fuser();
             $seller = $fUser->load("User", "userId", $item["seller"],"Euser");
             $category = EArticlesTypology::getCaseFromString($item["category"]);
             array_push($returningItemsArray, new Eitem($item["itemId"],$item["itemName"],
                                                        $item["itemDescription"],$item["itemPrice"],
-                                                       $item["isSold"],$category, $seller));
+                                                       $item["isSold"],$category, base64_encode($item["image"]), $seller));
         }
         return $returningItemsArray;
         
@@ -45,7 +50,7 @@ class Fitem extends FcommunicationDb {
             $category = EArticlesTypology::getCaseFromString($item["category"]);
             array_push($returningItemsArray, new Eitem($item["itemId"],$item["itemName"],
                                                        $item["itemDescription"],$item["itemPrice"],
-                                                       $item["isSold"],$category, $seller));
+                                                       $item["isSold"],$category, base64_encode($item["image"]), $seller));
         }
         return $returningItemsArray;
     }
@@ -55,13 +60,14 @@ class Fitem extends FcommunicationDb {
 $temp1 = new Euser("1","marco","matt", "mamatt", "a@a.com", "aaaa", "33333333", "1999-05-17", null , [],[],[]);
 $temp = new Eitem("12", "iPhone", "buone condizioni", 32 , false , EArticlesTypology::smartphone, $temp1);
 $var = new Fitem();
-/* exist test
-
-if($var->exist("Item", $temp) == true) {
+ exist test
+*/
+/*$var = new Fitem();
+if($var->exist("Item", "itemId", "3") ) {
     print("true");
     
 }else print ("false");
-
+/*
  store with user test 
 $var->store("Item", $temp);*/
 

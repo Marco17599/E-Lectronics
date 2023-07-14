@@ -1589,28 +1589,28 @@ div.owl-controls, .owl-controls div {
 # News Styles
 
 ----------------------------------------------------------------------------- */
-.news-bg-1 {
-  background-image: url(../images/latest-news/news-bg-1.jpg);
+.red {
+  background-image: url(../images/red.jpg);
 }
 
-.news-bg-2 {
-  background-image: url(../images/latest-news/news-bg-2.jpg);
+.yellow {
+  background-image: url(../images/yellow.jpg);
 }
 
-.news-bg-3 {
-  background-image: url(../images/latest-news/news-bg-3.jpg);
+.green {
+  background-image: url(../images/green.jpg);
 }
 
 .news-bg-4 {
-  background-image: url(../images/latest-news/news-bg-4.jpg);
+  background-image: url(../images/news-bg-4.jpg);
 }
 
 .news-bg-5 {
-  background-image: url(../images/latest-news/news-bg-5.jpg);
+  background-image: url(../images/news-bg-5.jpg);
 }
 
 .news-bg-6 {
-  background-image: url(../images/latest-news/news-bg-6.jpg);
+  background-image: url(../images/news-bg-6.jpg);
 }
 
 .latest-news-bg {
@@ -1668,7 +1668,7 @@ p.excerpt {
 }
 
 .single-artcile-bg {
-  background-image: url(../images/latest-news/news-bg-3.jpg);
+  background-image: url(../images/green.jpg);
   height: 450px;
 }
 
@@ -2066,7 +2066,7 @@ a.video-play-btn {
 }
 
 .abt-bg {
-  background-image: url(../images/abt.jpg);
+  background-image: url(../images/banner-bg.png);
   height: 100%;
   width: 100%;
   background-size: cover;
@@ -2158,7 +2158,7 @@ a.video-play-btn {
 }
 
 .feature-bg:after {
-  background-image: url(../images/feature-bg.jpg);
+  background-image: url(../images/banner-bg.png);
   position: absolute;
   right: 0;
   top: 0;
@@ -2383,7 +2383,8 @@ ul.social-link-team li a {
   text-align: center;
 }
 
-.product-filters ul li {
+.product-filters ul li,
+.product-filters ul a {
   display: inline-block;
   font-weight: 700;
   font-size: 18px;
@@ -2395,7 +2396,8 @@ ul.social-link-team li a {
   border-radius: 25px;
 }
 
-.product-filters ul li.active {
+.product-filters ul li.active ,
+.product-filters ul a.active{
   border: 2px solid #F28123;
   background-color: #F28123;
   color: #fff;

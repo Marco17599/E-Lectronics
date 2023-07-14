@@ -1,6 +1,6 @@
 <?php
-include_once "keyValues.php";
-class Ereview implements keyValues{
+
+class Ereview implements EkeyValues{
     private int $reviewId;
     private int $vote;
     private string $textOfReview;
@@ -57,7 +57,7 @@ public function getKeysValues() : array {
 
 public function evaluatesKey() : string {
     
-    $returningString = 'reviewId' . ' = '.$this->getReviewId().'';
+    $returningString = 'reviewId' . ' = \''.$this->getReviewId().'\'';
     return $returningString;
 }
 

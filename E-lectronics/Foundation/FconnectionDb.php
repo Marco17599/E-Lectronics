@@ -1,6 +1,6 @@
 <?php
 
-require_once "../Utility/UconfigDb.php";
+
 class FconnectionDb {
 
     private static $instance;

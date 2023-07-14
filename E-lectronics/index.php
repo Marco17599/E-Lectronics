@@ -1,15 +1,7 @@
 <?php
-
-require 'Smarty/libs/Smarty.class.php';
-
-$smarty = new Smarty;
-
-$smarty->setTemplateDir('Smarty/templates');
-$smarty->setCompileDir('Smarty/templates_c');
-$smarty->setCacheDir('Smarty/cache');
-$smarty->setConfigDir('Smarty/configs');
-
-$array_prova = [
+require_once 'smartyConfig.php';
+require_once "config/autoload.php";
+/*$array_prova = [
     "Smartphone" => [
         "uno","due"
     ],
@@ -23,7 +15,7 @@ $array_prova = [
         "a","b","c","d"
     ] ]  ;
 
-
+*/
 
 /*foreach($array_prova as $item){
     print($item ." ");
@@ -32,8 +24,23 @@ $array_prova = [
 
 //$smarty->testInstall();
 
-/*$smarty->assign('array', $array_prova);*/
-$smarty->display('item.tpl');
+//$smarty->assign('array', $array_prova);*/
+/*if($_SERVER['REQUEST_URI'] == "about"){
+    $smarty->display('about.tpl');
+}else
+*/
+/*$req = $_SERVER;
+*/
+/*$smarty =  SmartyConfig::initialize();
+ $smarty->display('index.tpl');
+//print("ciao");
+
+//array_search("E-lectronics",$resource);
+
+*/
+print ($_SERVER['REQUEST_URI']);
+$FrontController = CfrontController::getInstance($_SERVER['REQUEST_URI']);
+$FrontController->run();
 
 
 ?>

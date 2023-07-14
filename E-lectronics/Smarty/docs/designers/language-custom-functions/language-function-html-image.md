@@ -53,6 +53,6 @@ Example output of the above template would be:
 ```html
 <img src="pumpkin.jpg" alt="" width="44" height="68" />
 <img src="/path/from/docroot/pumpkin.jpg" alt="" width="44" height="68" />
-<img src="../path/relative/to/currdir/pumpkin.jpg" alt="" width="44" height="68" />
+<img src="path/relative/to/currdir/pumpkin.jpg" alt="" width="44" height="68" />
 ```
       

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-05-18 16:27:21
+/* Smarty version 4.3.1, created on 2023-07-14 02:49:52
   from '/home/marco/public_html/E-lectronics/Smarty/templates/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_646635c9055c41_38889071',
+  'unifunc' => 'content_64b09bb01c4d95_18468941',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ff049dd74f70efc5b714373255d81a6a262da31c' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/index.tpl',
-      1 => 1684420038,
+      1 => 1689295791,
       2 => 'file',
     ),
   ),
@@ -20,17 +20,21 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_646635c9055c41_38889071 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
+function content_64b09bb01c4d95_18468941 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-lectronics/Smarty/libs/plugins/modifier.count.php','function'=>'smarty_modifier_count',),));
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+ <base href="http://localhost/~marco/E-lectronics/" >
+
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
-	<title>Fruitkha</title>
+	<title>  E-lectronics</title>
 
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="Smarty/images/favicon.png">
@@ -73,57 +77,41 @@ function content_646635c9055c41_38889071 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="main-menu-wrap">
 						<!-- logo -->
 						<div class="site-logo">
-							<a href="index.html">
-								<img src="Smarty/images/logo.png" alt="">
-							</a>
+							<img src="Smarty/images/logo.png" alt="">
 						</div>
 						<!-- logo -->
 
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="#">Home</a>
-									<ul class="sub-menu">
-										<li><a href="index.html">Static Home</a></li>
-										<li><a href="index_2.html">Slider Home</a></li>
-									</ul>
+								<li class="current-list-item"><a href="">Home</a>
 								</li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="#">Pages</a>
-									<ul class="sub-menu">
-										<li><a href="404.html">404 page</a></li>
-										<li><a href="about.html">About</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="contact.html">Contact</a></li>
-										<li><a href="news.html">News</a></li>
-										<li><a href="shop.html">Shop</a></li>
-									</ul>
+
+								<li><a href="About">About</a></li>
+
+								<li>
+								<?php if ($_smarty_tpl->tpl_vars['isIdentified']->value == true) {?>
+								<a href="Profile"><i class="fas fa-solid fa-user"></i></a>
+								<?php } else { ?>
+								<a href="Login">Login</a>
+								<?php }?>
 								</li>
-								<li><a href="news.html">News</a>
-									<ul class="sub-menu">
-										<li><a href="news.html">News</a></li>
-										<li><a href="single-news.html">Single News</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact</a></li>
-								<li><a href="shop.html">Shop</a>
-									<ul class="sub-menu">
-										<li><a href="shop.html">Shop</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="single-product.html">Single Product</a></li>
-										<li><a href="cart.html">Cart</a></li>
-									</ul>
+									
+								
+								
+								<li><a href="Sell">Sell</a></li>
+								<li><a href="Items">Shop</a>
+									
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+										<a class="shopping-cart" href="Cart"><i class="fas fa-shopping-cart"></i></a>
+										<a class="mobile-hide search-bar-icon" ><i class="fas fa-search"></i></a>
 									</div>
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+						<a class="mobile-show search-bar-icon" href=""><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>
@@ -142,8 +130,11 @@ function content_646635c9055c41_38889071 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="search-bar">
 						<div class="search-bar-tablecell">
 							<h3>Search For:</h3>
-							<input type="text" placeholder="Keywords">
-							<button type="submit">Search <i class="fas fa-search"></i></button>
+							<input type="text" placeholder="Keywords" id="searchh">
+							
+							<button type="submit" onclick="Search()" >
+							Search <i class="fas fa-search"></i></button>
+							
 						</div>
 					</div>
 				</div>
@@ -159,11 +150,11 @@ function content_646635c9055c41_38889071 (Smarty_Internal_Template $_smarty_tpl)
 				<div class="col-lg-9 offset-lg-2 text-center">
 					<div class="hero-text">
 						<div class="hero-text-tablecell">
-							<p class="subtitle">Fresh & Organic</p>
-							<h1>Delicious Seasonal Fruits</h1>
+							<p class="subtitle">  Verified Sellers</p>
+							<h1>Most used electronics items</h1>
 							<div class="hero-btns">
-								<a href="shop.html" class="boxed-btn">Fruit Collection</a>
-								<a href="contact.html" class="bordered-btn">Contact Us</a>
+								<a href="Items" class="boxed-btn">Buy something</a>
+								<a href="Sell" class="bordered-btn">Sell something</a>
 							</div>
 						</div>
 					</div>
@@ -181,11 +172,11 @@ function content_646635c9055c41_38889071 (Smarty_Internal_Template $_smarty_tpl)
 				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
 					<div class="list-box d-flex align-items-center">
 						<div class="list-icon">
-							<i class="fas fa-shipping-fast"></i>
+							<i class="fas fa-sharp fa-light fa-check"></i>
 						</div>
 						<div class="content">
-							<h3>Free Shipping</h3>
-							<p>When order over $75</p>
+							<h3>Trusted sellers</h3>
+							<p>Voted by users</p>
 						</div>
 					</div>
 				</div>
@@ -195,19 +186,19 @@ function content_646635c9055c41_38889071 (Smarty_Internal_Template $_smarty_tpl)
 							<i class="fas fa-phone-volume"></i>
 						</div>
 						<div class="content">
-							<h3>24/7 Support</h3>
-							<p>Get support all day</p>
+							<h3>Sellers contacts </h3>
+							<p>Contact for more details</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6">
 					<div class="list-box d-flex justify-content-start align-items-center">
 						<div class="list-icon">
-							<i class="fas fa-sync"></i>
+							<i class="fas fa-sharp fa-light fa-user-shield"></i>
 						</div>
 						<div class="content">
-							<h3>Refund</h3>
-							<p>Get refund within 3 days!</p>
+							<h3>Customer guarantee</h3>
+							<p>We work for your safe shopping</p>
 						</div>
 					</div>
 				</div>
@@ -223,133 +214,147 @@ function content_646635c9055c41_38889071 (Smarty_Internal_Template $_smarty_tpl)
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="section-title">	
-						<h3><span class="orange-text">Our</span> Products</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+						<h3><span class="orange-text">Latest</span> Items</h3>
+						
 					</div>
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col-lg-4 col-md-6 text-center">
+			
+			
+			<?php $_smarty_tpl->_assignInScope('index', 0);?>
+		<div style = "height:100%; overflow-y:scroll; overflow-x:hidden" >
+		<?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['items']->value) == 0) {?>
+			<h2 style="font-size:30px; color: red ;text-align:center" > No items found!</h2>
+		<?php } else { ?>
+           <?php
+ while (smarty_modifier_count($_smarty_tpl->tpl_vars['items']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+			
+			
+
+          
+			<div class="row product-lists" >
+				<div class="col-lg-4 col-md-6 text-center <?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getCategory()->name;?>
+ ">
 					<div class="single-product-item">
+					<a href="Items/<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemId();?>
+"> 
 						<div class="product-image">
-							<a href="single-product.html"><img src="Smarty/images/products/product-img-1.jpg" alt=""></a>
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
 						</div>
-						<h3>Strawberry</h3>
-						<p class="product-price"><span>Per Kg</span> 85$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3><?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> </a>
+						<?php if (in_array($_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value],$_smarty_tpl->tpl_vars['cartItems']->value)) {?>
+						<div style="height:50px;">
+						<p  class="cart-btn"><i class="fas fa-shopping-cart"></i> Already in cart</p>
+						</div>
+						<?php } else { ?>
+
+                        <div style="height:50px;">
+						<form name="add" METHOD="post" >
+						
+						
+						<INPUT TYPE="hidden" NAME="itemId"  VALUE="<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemId();?>
+">
+						<p  class="cart-btn">  <input type="submit" value="Add to Cart" >  </p>
+						</form>
+						</div>
+						<?php }?>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 text-center">
+
+				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
+                           <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['items']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+				<div class="col-lg-4 col-md-6 text-center <?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getCategory()->name;?>
+ ">
 					<div class="single-product-item">
+					<a href="Items/<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemId();?>
+"> 
 						<div class="product-image">
-							<a href="single-product.html"><img src="Smarty/images/products/product-img-2.jpg" alt=""></a>
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
 						</div>
-						<h3>Berry</h3>
-						<p class="product-price"><span>Per Kg</span> 70$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3><?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> </a>
+					<?php if (in_array($_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value],$_smarty_tpl->tpl_vars['cartItems']->value)) {?>
+						<div style="height:50px;">
+						<p  class="cart-btn"><i class="fas fa-shopping-cart"></i> Already in cart</p>
+						</div>
+						<?php } else { ?>
+
+                        <div style="height:50px;">
+						<form name="add" METHOD="post" >
+						
+						
+						<INPUT TYPE="hidden" NAME="itemId"  VALUE="<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemId();?>
+">
+						<p  class="cart-btn">  <input type="submit" value="Add to Cart" >  </p>
+						</form>
+						</div>
+						<?php }?>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
+
+				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
+				<?php }?>
+                           <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['items']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+				<div class="col-lg-4 col-md-6 text-center <?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getCategory()->name;?>
+ ">
 					<div class="single-product-item">
+					<a href="Items/<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemId();?>
+"> 
 						<div class="product-image">
-							<a href="single-product.html"><img src="Smarty/images/products/product-img-3.jpg" alt=""></a>
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
 						</div>
-						<h3>Lemon</h3>
-						<p class="product-price"><span>Per Kg</span> 35$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3><?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> </a>
+						<?php if (in_array($_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value],$_smarty_tpl->tpl_vars['cartItems']->value)) {?>
+						<div style="height:50px;">
+						<p  class="cart-btn"><i class="fas fa-shopping-cart"></i> Already in cart</p>
+						</div>
+						<?php } else { ?>
+
+                        <div style="height:50px;">
+						<form name="add" METHOD="post" >
+						
+						
+						<INPUT TYPE="hidden" NAME="itemId"  VALUE="<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemId();?>
+">
+						<p  class="cart-btn">  <input type="submit" value="Add to Cart" >  </p>
+						</form>
+						</div>
+						<?php }?>
 					</div>
 				</div>
+				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
+				<?php }?>
+				</div>
+				
+			
+                 <?php }?>
+
+				 <?php }?>
+ 
+
 			</div>
+
+
 		</div>
+
 	</div>
 	<!-- end product section -->
 
-	<!-- cart banner section -->
-	<section class="cart-banner pt-100 pb-100">
-    	<div class="container">
-        	<div class="row clearfix">
-            	<!--Image Column-->
-            	<div class="image-column col-lg-6">
-                	<div class="image">
-                    	<div class="price-box">
-                        	<div class="inner-price">
-                                <span class="price">
-                                    <strong>30%</strong> <br> off per kg
-                                </span>
-                            </div>
-                        </div>
-                    	<img src="Smarty/images/a.jpg" alt="">
-                    </div>
-                </div>
-                <!--Content Column-->
-                <div class="content-column col-lg-6">
-					<h3><span class="orange-text">Deal</span> of the month</h3>
-                    <h4>Hikan Strwaberry</h4>
-                    <div class="text">Quisquam minus maiores repudiandae nobis, minima saepe id, fugit ullam similique! Beatae, minima quisquam molestias facere ea. Perspiciatis unde omnis iste natus error sit voluptatem accusant</div>
-                    <!--Countdown Timer-->
-                    <div class="time-counter"><div class="time-countdown clearfix" data-countdown="2020/2/01"><div class="counter-column"><div class="inner"><span class="count">00</span>Days</div></div> <div class="counter-column"><div class="inner"><span class="count">00</span>Hours</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Mins</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Secs</div></div></div></div>
-                	<a href="cart.html" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end cart banner section -->
+	
 
-	<!-- testimonail-section -->
-	<div class="testimonail-section mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1 text-center">
-					<div class="testimonial-sliders">
-						<div class="single-testimonial-slider">
-							<div class="client-avater">
-								<img src="Smarty/images/avaters/avatar1.png" alt="">
-							</div>
-							<div class="client-meta">
-								<h3>Saira Hakim <span>Local shop owner</span></h3>
-								<p class="testimonial-body">
-									" Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
-								</p>
-								<div class="last-icon">
-									<i class="fas fa-quote-right"></i>
-								</div>
-							</div>
-						</div>
-						<div class="single-testimonial-slider">
-							<div class="client-avater">
-								<img src="Smarty/images/avaters/avatar2.png" alt="">
-							</div>
-							<div class="client-meta">
-								<h3>David Niph <span>Local shop owner</span></h3>
-								<p class="testimonial-body">
-									" Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
-								</p>
-								<div class="last-icon">
-									<i class="fas fa-quote-right"></i>
-								</div>
-							</div>
-						</div>
-						<div class="single-testimonial-slider">
-							<div class="client-avater">
-								<img src="Smarty/images/avaters/avatar3.png" alt="">
-							</div>
-							<div class="client-meta">
-								<h3>Jacob Sikim <span>Local shop owner</span></h3>
-								<p class="testimonial-body">
-									" Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
-								</p>
-								<div class="last-icon">
-									<i class="fas fa-quote-right"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end testimonail-section -->
+	
 	
 	<!-- advertisement section -->
 	<div class="abt-section mb-150">
@@ -357,16 +362,16 @@ function content_646635c9055c41_38889071 (Smarty_Internal_Template $_smarty_tpl)
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
 					<div class="abt-bg">
-						<a href="https://www.youtube.com/watch?v=DBLlFWYcIGQ" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
+						
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-12">
 					<div class="abt-text">
-						<p class="top-sub">Since Year 1999</p>
-						<h2>We are <span class="orange-text">Fruitkha</span></h2>
-						<p>Etiam vulputate ut augue vel sodales. In sollicitudin neque et massa porttitor vestibulum ac vel nisi. Vestibulum placerat eget dolor sit amet posuere. In ut dolor aliquet, aliquet sapien sed, interdum velit. Nam eu molestie lorem.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente facilis illo repellat veritatis minus, et labore minima mollitia qui ducimus.</p>
-						<a href="about.html" class="boxed-btn mt-4">know more</a>
+						<p class="top-sub">Since Year 2023</p>
+						<h2>We are <span class="orange-text">E-lectronics</span></h2>
+						<p>We are two Information Engineering students Marco Matteucci and Federico D'Alesio. </p>
+						<p>We created this web application for a project in order to learn and apply the Web Development concepts and techniques.</p>
+						<a href="About" class="boxed-btn mt-4">know more</a>
 					</div>
 				</div>
 			</div>
@@ -377,104 +382,17 @@ function content_646635c9055c41_38889071 (Smarty_Internal_Template $_smarty_tpl)
 	<!-- shop banner -->
 	<section class="shop-banner">
     	<div class="container">
-        	<h3>December sale is on! <br> with big <span class="orange-text">Discount...</span></h3>
-            <div class="sale-percent"><span>Sale! <br> Upto</span>50% <span>off</span></div>
-            <a href="shop.html" class="cart-btn btn-lg">Shop Now</a>
+        	<h3>Is it time for your next smartphone?<br> </h3>
+            <a href="Items" class="cart-btn btn-lg" style = "margin-top:30px;">Shop Now</a>
         </div>
     </section>
 	<!-- end shop banner -->
 
-	<!-- latest news -->
-	<div class="latest-news pt-150 pb-150">
-		<div class="container">
-
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="section-title">	
-						<h3><span class="orange-text">Our</span> News</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.html">You will vainly look for fruit on it in autumn.</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href="single-news.html"><div class="latest-news-bg news-bg-2"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.html">A man's worth has its season, like tomato.</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-					<div class="single-latest-news">
-						<a href="single-news.html"><div class="latest-news-bg news-bg-3"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.html">Good thoughts bear good fresh juicy fruit.</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<a href="news.html" class="boxed-btn">More News</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end latest news -->
+	
 
 	<!-- logo carousel -->
 	<div class="logo-carousel-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="logo-carousel-inner">
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/1.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/2.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/3.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/4.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/5.png" alt="">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 	</div>
 	<!-- end logo carousel -->
 
@@ -485,16 +403,19 @@ function content_646635c9055c41_38889071 (Smarty_Internal_Template $_smarty_tpl)
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-box about-widget">
 						<h2 class="widget-title">About us</h2>
-						<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+						<p>We are two Information Engineering students Marco Matteucci and Federico D'Alesio.
+						We created this web application for a project in order to learn and apply the Web Development concepts and techniques.</p>
+
+                            
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-box get-in-touch">
 						<h2 class="widget-title">Get in Touch</h2>
 						<ul>
-							<li>34/8, East Hukupara, Gifirtok, Sadan.</li>
-							<li>support@fruitkha.com</li>
-							<li>+00 111 222 3333</li>
+							<li>??/?, Via ?, ?, ?.</li>
+							<li>support@E-lectronics.gmail.com</li>
+							<li>+39 111 222 3333</li>
 						</ul>
 					</div>
 				</div>
@@ -502,11 +423,11 @@ function content_646635c9055c41_38889071 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="services.html">Shop</a></li>
-							<li><a href="news.html">News</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="">Home</a></li>
+							<li><a href="About">About</a></li>
+							<li><a href="Login">Login</a></li>
+							<li><a href="Sell">Sell</a></li>
+							<li><a href="Items">Shop</a></li>
 						</ul>
 					</div>
 				</div>
@@ -535,11 +456,11 @@ function content_646635c9055c41_38889071 (Smarty_Internal_Template $_smarty_tpl)
 				<div class="col-lg-6 text-right col-md-12">
 					<div class="social-icons">
 						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-instagram"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-dribbble"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -587,6 +508,10 @@ function content_646635c9055c41_38889071 (Smarty_Internal_Template $_smarty_tpl)
 	<!-- main js -->
 	<?php echo '<script'; ?>
  src="Smarty/js/main.js"><?php echo '</script'; ?>
+>
+	<!-- modify js -->
+	<?php echo '<script'; ?>
+ src="Smarty/js/modify.js"><?php echo '</script'; ?>
 >
 
 </body>

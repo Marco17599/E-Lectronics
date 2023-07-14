@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ <base href="http://localhost/~marco/E-lectronics/"   >
+
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,57 +52,35 @@
 					<div class="main-menu-wrap">
 						<!-- logo -->
 						<div class="site-logo">
-							<a href="index.html">
-								<img src="Smarty/images/provalogo.png" alt="">
-							</a>
+							<img src="Smarty/images/logo.png" alt="">
 						</div>
 						<!-- logo -->
 
-						<!-- menu start -->
+					  <!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="#">Home</a>
-									<ul class="sub-menu">
-										<li><a href="index.html">Static Home</a></li>
-										<li><a href="index_2.html">Slider Home</a></li>
-									</ul>
+								<li class="current-list-item"><a href="">Home</a>
 								</li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="#">Pages</a>
-									<ul class="sub-menu">
-										<li><a href="404.html">404 page</a></li>
-										<li><a href="about.html">About</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="contact.html">Contact</a></li>
-										<li><a href="news.html">News</a></li>
-										<li><a href="shop.html">Shop</a></li>
-									</ul>
-								</li>
-								<li><a href="news.html">News</a>
-									<ul class="sub-menu">
-										<li><a href="news.html">News</a></li>
-										<li><a href="single-news.html">Single News</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact</a></li>
-								<li><a href="shop.html">Shop</a>
-									<ul class="sub-menu">
-										<li><a href="shop.html">Shop</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="single-product.html">Single Product</a></li>
-										<li><a href="cart.html">Cart</a></li>
-									</ul>
+
+								<li><a href="About">About</a></li>
+
+								<li><a href="Login">Login</a></li>
+									
+								
+								
+								<li><a href="Sell">Sell</a></li>
+								<li><a href="Items">Shop</a>
+									
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+										<a class="shopping-cart" href="Cart"><i class="fas fa-shopping-cart"></i></a>
+										<a class="mobile-hide search-bar-icon" ><i class="fas fa-search"></i></a>
 									</div>
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+						<a class="mobile-show search-bar-icon" href=""><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>
@@ -135,7 +115,7 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>See more Details</p>
+						<p>Item Details</p>
 						<h1>Single Product</h1>
 					</div>
 				</div>
@@ -150,28 +130,38 @@
 			<div class="row">
 				<div class="col-md-5">
 					<div class="single-product-img">
-						<img src="Smarty/images/products/product-img-5.jpg" alt="">
+						<img src="data:image/jpg;charset=utf8;base64,{$item["image"]}" style="width:400px;height:400px;" >
 					</div>
 				</div>
 				<div class="col-md-7">
 					<div class="single-product-content">
-						<h3>Green apples have polyphenols</h3>
-						<p class="single-product-pricing"><span>Per Kg</span> $50</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta sint dignissimos, rem commodi cum voluptatem quae reprehenderit repudiandae ea tempora incidunt ipsa, quisquam animi perferendis eos eum modi! Tempora, earum.</p>
+						<h3>{$item["itemName"]}</h3>
+						 <p class="single-product-pricing"> Price : ${$item["itemPrice"]}</p>
+						
+						<h4 >Description</h4>
+						<p style = " overflow-y:scroll; overflow-x:hidden; height:120px;">{$item["itemDescription"]}</p>
+						
 						<div class="single-product-form">
-							<form action="index.html">
-								<input type="number" placeholder="0">
-							</form>
-							<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-							<p><strong>Categories: </strong>Fruits, Organic</p>
+							
+						{if in_array($,$cartItems)}
+						
+						<p  class="cart-btn"><i class="fas fa-shopping-cart"></i> Already in cart</p>
+						
+						{else}
+
+                        <div style="height:50px;">
+						<form name="add" METHOD="post" >
+						
+						
+						<INPUT TYPE="hidden" NAME="itemId"  VALUE="{$item["itemId"]}">
+						<p  class="cart-btn">  <input type="submit" value="Add to Cart" >  </p>
+						</form>
 						</div>
-						<h4>Share:</h4>
-						<ul class="product-share">
-							<li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href=""><i class="fab fa-twitter"></i></a></li>
-							<li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
-							<li><a href=""><i class="fab fa-linkedin"></i></a></li>
-						</ul>
+						{/if}
+							<p><strong>Category: </strong>{$item["category"]}</p>
+						</div>
+						<h4>Seller : <span > <a href= "Reviews/{$seller["userId"]}" style="color:#F28123;"> {$seller["username"]} </a></span></h4>
+						
 					</div>
 				</div>
 			</div>
@@ -186,41 +176,112 @@
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="section-title">	
 						<h3><span class="orange-text">Related</span> Products</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+						
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-lg-4 col-md-6 text-center">
+			{assign var =index value=0}
+		<div style = "height:100%; overflow-y:scroll; overflow-x:hidden" >
+		{if $items|@count == 0}
+			<h2 style="font-size:30px; color: red ;text-align:center" > No items found!</h2>
+		{else}
+           {while $items|@count > $index}
+			
+			
+
+          
+			<div class="row product-lists" >
+				<div class="col-lg-4 col-md-6 text-center {$items[$index]->getCategory()->name} ">
 					<div class="single-product-item">
+					<a href="Items/{$items[$index]->getItemId()}" >
 						<div class="product-image">
-							<a href="single-product.html"><img src="Smarty/images/products/product-img-1.jpg" alt=""></a>
+							<img src="data:image/jpg;charset=utf8;base64,{$items[$index]->getImage()}" style="width:250px; height:250px;" >
 						</div>
-						<h3>Strawberry</h3>
-						<p class="product-price"><span>Per Kg</span> 85$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3>{$items[$index]->getItemName()}</h3>
+						<p class="product-price"><span>Price</span> {$items[$index]->getItemPrice()}$ </p></a>
+						{if in_array($items[$index],$cartItems)}
+						<div style="height:50px;">
+						<p  class="cart-btn"><i class="fas fa-shopping-cart"></i> Already in cart</p>
+						</div>
+						{else}
+
+                        <div style="height:50px;">
+						<form name="add" METHOD="post" >
+						
+						
+						<INPUT TYPE="hidden" NAME="itemId"  VALUE="{$items[$index]->getItemId()}">
+						<p  class="cart-btn">  <input type="submit" value="Add to Cart" >  </p>
+						</form>
+						</div>
+						{/if}
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 text-center">
+
+				{assign var=index value=$index+1}
+                           {if $items|@count >$index}
+				<div class="col-lg-4 col-md-6 text-center {$items[$index]->getCategory()->name} ">
 					<div class="single-product-item">
+						<a href="Items/{$items[$index]->getItemId()}">
 						<div class="product-image">
-							<a href="single-product.html"><img src="Smarty/images/products/product-img-2.jpg" alt=""></a>
+							<img src="data:image/jpg;charset=utf8;base64,{$items[$index]->getImage()}" style="width:250px; height:250px;" >
 						</div>
-						<h3>Berry</h3>
-						<p class="product-price"><span>Per Kg</span> 70$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3>{$items[$index]->getItemName()}</h3>
+						<p class="product-price"><span>Price</span> {$items[$index]->getItemPrice()}$ </p></a>{if in_array($items[$index],$cartItems)}
+						<div style="height:50px;">
+						<p  class="cart-btn"><i class="fas fa-shopping-cart"></i> Already in cart</p>
+						</div>
+						{else}
+
+                        <div style="height:50px;">
+						<form name="add" METHOD="post" >
+						
+						
+						<INPUT TYPE="hidden" NAME="itemId"  VALUE="{$items[$index]->getItemId()}">
+						<p  class="cart-btn">  <input type="submit" value="Add to Cart" >  </p>
+						</form>
+						</div>
+						{/if}
+						
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3 text-center">
+
+				{assign var=index value=$index+1}
+				{/if}
+                           {if $items|@count >$index}
+				<div class="col-lg-4 col-md-6 text-center {$items[$index]->getCategory()->name} ">
 					<div class="single-product-item">
+						<a href="Items/{$items[$index]->getItemId()}" >
 						<div class="product-image">
-							<a href="single-product.html"><img src="Smarty/images/products/product-img-3.jpg" alt=""></a>
+							<img src="data:image/jpg;charset=utf8;base64,{$items[$index]->getImage()}" style="width:250px; height:250px;" >
 						</div>
-						<h3>Lemon</h3>
-						<p class="product-price"><span>Per Kg</span> 35$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3>{$items[$index]->getItemName()}</h3>
+						<p class="product-price"><span>Price</span> {$items[$index]->getItemPrice()}$ </p></a>
+						{if in_array($items[$index],$cartItems)}
+						<div style="height:50px;">
+						<p  class="cart-btn"><i class="fas fa-shopping-cart"></i> Already in cart</p>
+						</div>
+						{else}
+
+                        <div style="height:50px;">
+						<form name="add" METHOD="post" >
+						
+						
+						<INPUT TYPE="hidden" NAME="itemId"  VALUE="{$items[$index]->getItemId()}">
+						<p  class="cart-btn">  <input type="submit" value="Add to Cart" >  </p>
+						</form>
+						</div>
+						{/if}
 					</div>
 				</div>
+				{assign var=index value=$index+1}
+				{/if}
+				</div>
+				
+			
+                 {/while}
+				 {/if}
+ 
+
 			</div>
 		</div>
 	</div>
@@ -228,49 +289,30 @@
 
 	<!-- logo carousel -->
 	<div class="logo-carousel-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="logo-carousel-inner">
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/1.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/2.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/3.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/4.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="Smarty/images/company-logos/5.png" alt="">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 	</div>
 	<!-- end logo carousel -->
 
-	<!-- footer -->
+	 <!-- footer -->
 	<div class="footer-area">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-box about-widget">
 						<h2 class="widget-title">About us</h2>
-						<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+						<p>We are two Information Engineering students Marco Matteucci and Federico D'Alesio.
+						We created this web application for a project in order to learn and apply the Web Development concepts and techniques.</p>
+
+                            
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-box get-in-touch">
 						<h2 class="widget-title">Get in Touch</h2>
 						<ul>
-							<li>34/8, East Hukupara, Gifirtok, Sadan.</li>
-							<li>support@fruitkha.com</li>
-							<li>+00 111 222 3333</li>
+							<li>??/?, Via ?, ?, ?.</li>
+							<li>support@E-lectronics.gmail.com</li>
+							<li>+39 111 222 3333</li>
 						</ul>
 					</div>
 				</div>
@@ -278,11 +320,11 @@
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="services.html">Shop</a></li>
-							<li><a href="news.html">News</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="">Home</a></li>
+							<li><a href="About">About</a></li>
+							<li><a href="Login">Login</a></li>
+							<li><a href="Sell">Sell</a></li>
+							<li><a href="Items">Shop</a></li>
 						</ul>
 					</div>
 				</div>
@@ -311,11 +353,11 @@
 				<div class="col-lg-6 text-right col-md-12">
 					<div class="social-icons">
 						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-instagram"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="#"   ><i class="fab fa-dribbble"></i></a></li>
 						</ul>
 					</div>
 				</div>
