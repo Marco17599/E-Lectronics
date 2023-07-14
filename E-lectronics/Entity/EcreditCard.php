@@ -90,6 +90,17 @@ class EcreditCard implements EkeyValues{
 	public function setCCV(string $CCV) {
 		$this->CCV = $CCV;
     }
+	public function expiredCard():string{
+		$date = explode("-",$this->expirationDate);
+          $date1=time();
+		  $date2=mktime(0,0,0,$date[0],1,$date[1]);
+		  if (($date2-$date1)<0)
+            return "scaduta";
+          else
+            return "valida";
+	}
+
+
 
 	public function getKeysValues() : array {
 		$array = [];

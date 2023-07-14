@@ -150,6 +150,19 @@ class Euser implements EkeyValues {
 		return $this;
 	}
 
+	public function AverageReviews():float {
+		$rv= $this->userReviews;
+		$review_count = count($rv);
+		$res = 0;
+		foreach ($rv as $n) {
+				$res += $n;
+		}
+		$a = $res/$review_count;
+		printf($a);
+		return $a;
+		}
+	
+	
 	public function getKeysValues() : array {
 		$array = [];
 		foreach ($this as $key=>$value){

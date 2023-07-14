@@ -6,16 +6,16 @@ class Eitem implements EkeyValues{
 	private string $itemDescription;
     private float $itemPrice;
 	private bool $isSold;
-	private EArticlesTypology $category;
+	private EArticlesTypology|null $category;
 	private $image;
-    private Euser $seller;
+    private Euser|null $seller;
     
     
     
 
     public function __construct(string $itemId, string $itemName, string $itemDescription,
 	                            float $itemPrice,  bool $isSold,  $category, $image,
-                                Euser $seller  ) 
+                                Euser|null $seller  ) 
                                  {
 
         $this->itemId = $itemId;

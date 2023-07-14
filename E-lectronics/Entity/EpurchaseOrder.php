@@ -111,6 +111,16 @@ class EpurchaseOrder implements EkeyValues{
 		return $this;
 	}
 
+	public function addItem(Eitem $itemAdd){
+		array_push($this->items, $itemAdd);
+	 }
+ 
+	 public function removeItem(Eitem $itemRemove){
+		 $key = array_search ($itemRemove, $this->items);
+		 unset($this->items[$key]);
+		  $this->items=array_values($this->items);
+	 }
+
 	public function getKeysValues() : array {
 		$array = [];
 		foreach ($this as $key=>$value){

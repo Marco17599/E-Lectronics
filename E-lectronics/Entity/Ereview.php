@@ -4,12 +4,12 @@ class Ereview implements EkeyValues{
     private int $reviewId;
     private int $vote;
     private string $textOfReview;
-    private Euser|null $reviewer;
-    private Euser|null $reviewed;
+    private Euser $reviewer;
+    private Euser $reviewed;
    
     
 
-    public function __construct(int $reviewId, int $vote, string $textOfReview, Euser|null $reviewer, Euser|null $reviewed ) {
+    public function __construct(int $reviewId, int $vote, string $textOfReview, Euser $reviewer, Euser $reviewed ) {
         $this->reviewId = $reviewId;
         $this->reviewer = $reviewer;
         $this->reviewed = $reviewed;

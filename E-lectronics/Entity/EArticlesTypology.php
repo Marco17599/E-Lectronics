@@ -7,7 +7,7 @@
     case wires;
     case others;
 
-    public static function getCaseFromString($string) : EArticlesTypology|null{
+    public static function getCaseFromString($string) : EArticlesTypology{
       $returningCase = null;
       foreach(EArticlesTypology::cases() as $category){
          if($category->name == $string){
