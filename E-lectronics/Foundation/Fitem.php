@@ -1,7 +1,5 @@
 <?php
-//require_once '../Entity/EArticolesTypology.php';
-/*require_once 'FconnectionDb.php';
-require_once 'FcommunicationDb.php';*/
+
 
 class Fitem extends FcommunicationDb {
     public function load(string $table, string $key, string $keyValue, string $nameObject) :object|null {
@@ -42,7 +40,7 @@ class Fitem extends FcommunicationDb {
     public function loadAllCategoryItems(EArticlesTypology $category) : array {
         $returningItemsArray = [];
         $pdo = FconnectionDb::getInstance()->getPdo();
-        $query='SELECT * FROM `Item` WHERE category =   \''.$category->name.'\'';
+        $query='SELECT * FROM `Item` WHERE category =   \''.$category->name.'\'AND isSold = false';
         $objectAttributes  = (array) $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
         foreach($objectAttributes as $item) {
             $fUser = new Fuser();
@@ -55,30 +53,74 @@ class Fitem extends FcommunicationDb {
         return $returningItemsArray;
     }
 
+    public function loadAllSoldByUserItems(Euser $user) : array {
+        $returningItemsArray = [];
+        $pdo = FconnectionDb::getInstance()->getPdo();
+        $query='SELECT * FROM `Item` WHERE seller =   \''.$user->getUserId().'\' AND isSold = true';
+        $objectAttributes  = (array) $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        foreach($objectAttributes as $item) {
+            $fUser = new Fuser();
+          
+            $category = EArticlesTypology::getCaseFromString($item["category"]);
+            array_push($returningItemsArray, new Eitem($item["itemId"],$item["itemName"],
+                                                       $item["itemDescription"],$item["itemPrice"],
+                                                       $item["isSold"],$category, base64_encode($item["image"]), $user));
+        }
+        return $returningItemsArray;
+
+
+    }
  
-}/*
-$temp1 = new Euser("1","marco","matt", "mamatt", "a@a.com", "aaaa", "33333333", "1999-05-17", null , [],[],[]);
-$temp = new Eitem("12", "iPhone", "buone condizioni", 32 , false , EArticlesTypology::smartphone, $temp1);
-$var = new Fitem();
- exist test
-*/
-/*$var = new Fitem();
-if($var->exist("Item", "itemId", "3") ) {
-    print("true");
-    
-}else print ("false");
-/*
- store with user test 
-$var->store("Item", $temp);*/
 
+    public function loadAllSellingByUserItems(Euser $user) : array {
+        $returningItemsArray = [];
+        $pdo = FconnectionDb::getInstance()->getPdo();
+        $query='SELECT * FROM `Item` WHERE seller =   \''.$user->getUserId().'\' AND isSold = false';
+        $objectAttributes  = (array) $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        foreach($objectAttributes as $item) {
+            $fUser = new Fuser();
+          
+            $category = EArticlesTypology::getCaseFromString($item["category"]);
+            array_push($returningItemsArray, new Eitem($item["itemId"],$item["itemName"],
+                                                       $item["itemDescription"],$item["itemPrice"],
+                                                       $item["isSold"],$category, base64_encode($item["image"]), $user));
+        }
+        return $returningItemsArray;
+    }
 
-/*$var = new Fitem();
-$item = $var->load("Item", "itemId", "12","Eitem");
-print($item->getVenditore()->getBirthDayDate());*/
+    public function loadAllBuyedByUserItems(Euser $user) : array {
+        $returningItemsArray = [];
+        $pdo = FconnectionDb::getInstance()->getPdo();
+        $query='SELECT * FROM `Item` WHERE buyer =   \''.$user->getUserId().'\'';
+        $objectAttributes  = (array) $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        foreach($objectAttributes as $item) {
+            $fUser = new Fuser();
+           $seller = $fUser->load("User", "userId", $item["seller"],"Euser");
+            $category = EArticlesTypology::getCaseFromString($item["category"]);
+            array_push($returningItemsArray, new Eitem($item["itemId"],$item["itemName"],
+                                                       $item["itemDescription"],$item["itemPrice"],
+                                                       $item["isSold"],$category, base64_encode($item["image"]), $seller));
+        }
+        return $returningItemsArray;
+    }
 
-/*$var = new Fitem();
-$array = $var->loadAllCategoryItems(EArticlesTypology::wires);
-print_r($array);
-*/
+    public function loadAllSearchedItems(string $search) : array {
+        $returningItemsArray = [];
+        $pdo = FconnectionDb::getInstance()->getPdo();
+        $query='SELECT * FROM `Item` WHERE itemName  LIKE    \''. '%'.$search. '%'.'\' ';
+        
+       
+        $objectAttributes  = (array) $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        foreach($objectAttributes as $item) {
+            $fUser = new Fuser();
+           $seller = $fUser->load("User", "userId", $item["seller"],"Euser");
+            $category = EArticlesTypology::getCaseFromString($item["category"]);
+            array_push($returningItemsArray, new Eitem($item["itemId"],$item["itemName"],
+                                                       $item["itemDescription"],$item["itemPrice"],
+                                                       $item["isSold"],$category, base64_encode($item["image"]), $seller));
+        }
+        return $returningItemsArray;
+    }
+}
 
 ?>

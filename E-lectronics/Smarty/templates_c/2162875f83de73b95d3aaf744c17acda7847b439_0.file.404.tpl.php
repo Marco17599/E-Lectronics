@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-06-08 03:23:57
+/* Smarty version 4.3.1, created on 2023-07-17 16:32:18
   from '/home/marco/public_html/E-lectronics/Smarty/templates/404.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64812dad3acac0_65708409',
+  'unifunc' => 'content_64b550f2801942_25953791',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2162875f83de73b95d3aaf744c17acda7847b439' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/404.tpl',
-      1 => 1686187436,
+      1 => 1689604217,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64812dad3acac0_65708409 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64b550f2801942_25953791 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +82,7 @@ function content_64812dad3acac0_65708409 (Smarty_Internal_Template $_smarty_tpl)
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li ><a href="">Home</a>
+								<li ><a href="Home" >Home</a>
 								</li>
 
 								<li><a href="About">About</a></li>
@@ -103,7 +103,7 @@ function content_64812dad3acac0_65708409 (Smarty_Internal_Template $_smarty_tpl)
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href=""><i class="fas fa-search"></i></a>
+						<a class="mobile-show search-bar-icon" href="Home" ><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 								 
@@ -113,25 +113,27 @@ function content_64812dad3acac0_65708409 (Smarty_Internal_Template $_smarty_tpl)
 		</div>
 	</div>
 	<!-- end header -->
-
-		<!-- search area -->
-		<div class="search-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<span class="close-btn"><i class="fas fa-window-close"></i></span>
-						<div class="search-bar">
-							<div class="search-bar-tablecell">
-								<h3>Search For:</h3>
-								<input type="text" placeholder="Keywords">
-								<button type="submit">Search <i class="fas fa-search"></i></button>
-							</div>
+<!-- search area -->
+	<div class="search-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+					<div class="search-bar">
+						<div class="search-bar-tablecell">
+							<h3>Search For:</h3>
+							<input type="text" placeholder="Keywords" id="searchh">
+							
+							<button type="submit" onclick="Search()" >
+							Search <i class="fas fa-search"></i></button>
+							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- end search arewa -->
+	</div>
+	<!-- end search area -->
 		<!-- breadcrumb-section -->
 		<div class="breadcrumb-section breadcrumb-bg">
 			<div class="container">
@@ -156,7 +158,7 @@ function content_64812dad3acac0_65708409 (Smarty_Internal_Template $_smarty_tpl)
 								<i class="far fa-sad-cry"></i>
 								<h1>Oops! Not Found.</h1>
 								<p>The page you requested for is not found.</p>
-								<a href="" class="boxed-btn">Back to Home</a>
+								<a href="Home"  class="boxed-btn">Back to Home</a>
 							</div>
 						</div>
 					</div>
@@ -199,7 +201,7 @@ function content_64812dad3acac0_65708409 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="">Home</a></li>
+							<li><a href="Home" >Home</a></li>
 							<li><a href="About">About</a></li>
 							<li><a href="Login">Login</a></li>
 							<li><a href="Sell">Sell</a></li>
@@ -211,10 +213,8 @@ function content_64812dad3acac0_65708409 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
+						<input type="email" placeholder="Email">
+							<button ><i class="fas fa-paper-plane"></i></button>
 					</div>
 				</div>
 			</div>
@@ -222,28 +222,7 @@ function content_64812dad3acac0_65708409 (Smarty_Internal_Template $_smarty_tpl)
 	</div>
 	<!-- end footer -->
 	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#"   ><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
+	
 	
 	<!-- jquery -->
 	<?php echo '<script'; ?>
@@ -285,6 +264,11 @@ function content_64812dad3acac0_65708409 (Smarty_Internal_Template $_smarty_tpl)
 	<?php echo '<script'; ?>
  src="Smarty/js/main.js"><?php echo '</script'; ?>
 >
+	<!-- modify js -->
+	<?php echo '<script'; ?>
+ src="Smarty/js/modify.js"><?php echo '</script'; ?>
+>
+
 	
 	</body>
 </html><?php }

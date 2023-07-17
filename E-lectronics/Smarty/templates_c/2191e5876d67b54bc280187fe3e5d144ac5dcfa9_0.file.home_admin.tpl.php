@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-07-14 17:55:16
+/* Smarty version 4.3.1, created on 2023-07-17 16:29:10
   from '/home/marco/public_html/E-lectronics/Smarty/templates/home_admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64b16fe4c85cf1_63037498',
+  'unifunc' => 'content_64b550362f1918_21226549',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2191e5876d67b54bc280187fe3e5d144ac5dcfa9' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/home_admin.tpl',
-      1 => 1689349132,
+      1 => 1689604139,
       2 => 'file',
     ),
   ),
@@ -20,21 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64b16fe4c85cf1_63037498 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64b550362f1918_21226549 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-lectronics/Smarty/libs/plugins/modifier.count.php','function'=>'smarty_modifier_count',),));
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
  
- <base href="http://localhost/~marco/E-lectronics/"   >
+ <!--<base href="http://localhost/~marco/E-lectronics/"   >-->
+ <base href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_SERVER['PHP_SELF'];?>
+">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
-	<title>Shop</title>
+	<title>Admin</title>
 
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="Smarty/images/favicon.png">
@@ -269,55 +272,6 @@ $ </p> </a>
 	</div>
 	<!-- end logo carousel -->
 
-	 <!-- footer -->
-	<div class="footer-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box about-widget">
-						<h2 class="widget-title">About us</h2>
-						<p>We are two Information Engineering students Marco Matteucci and Federico D'Alesio.
-						We created this web application for a project in order to learn and apply the Web Development concepts and techniques.</p>
-
-                            
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box get-in-touch">
-						<h2 class="widget-title">Get in Touch</h2>
-						<ul>
-							<li>??/?, Via ?, ?, ?.</li>
-							<li>support@E-lectronics.gmail.com</li>
-							<li>+39 111 222 3333</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box pages">
-						<h2 class="widget-title">Pages</h2>
-						<ul>
-							<li><a href="">Home</a></li>
-							<li><a href="About">About</a></li>
-							<li><a href="Login">Login</a></li>
-							<li><a href="Sell">Sell</a></li>
-							<li><a href="Items">Shop</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box subscribe">
-						<h2 class="widget-title">Subscribe</h2>
-						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end footer -->
 	
 	<!-- copyright -->
 	<div class="copyright">

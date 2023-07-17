@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-07-14 03:06:20
+/* Smarty version 4.3.1, created on 2023-07-17 10:35:40
   from '/home/marco/public_html/E-lectronics/Smarty/templates/checkout.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64b09f8c953b15_47684963',
+  'unifunc' => 'content_64b4fd5c6737f1_44445141',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b4ca22947e1b018173894b47b84ded1ee9dbc4bc' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/checkout.tpl',
-      1 => 1689296779,
+      1 => 1689582418,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64b09f8c953b15_47684963 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64b4fd5c6737f1_44445141 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
- <base href="http://localhost/~marco/E-lectronics/"   >
+ <!--<base href="http://localhost/~marco/E-lectronics/"   >-->
+ <base href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_SERVER['PHP_SELF'];?>
+">
 
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -82,16 +85,16 @@ function content_64b09f8c953b15_47684963 (Smarty_Internal_Template $_smarty_tpl)
 					  <!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li ><a href="">Home</a>
+								<li ><a href="Home" >Home</a>
 								</li>
 
 								<li><a href="About">About</a></li>
 
 								<li>
 								<?php if ($_smarty_tpl->tpl_vars['isIdentified']->value == true) {?>
-								<a href="Profile"><i class="fas fa-solid fa-user"></i></a>
+								<li><a href="Profile"><i class="fas fa-solid fa-user"></i></a></li>
 								<?php } else { ?>
-								<a href="Login">Login</a>
+							<li>	<a href="Login">Login</a> </li>
 								<?php }?>
 								</li>
 									
@@ -111,7 +114,7 @@ function content_64b09f8c953b15_47684963 (Smarty_Internal_Template $_smarty_tpl)
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href=""><i class="fas fa-search"></i></a>
+						<a class="mobile-show search-bar-icon" href="Home" ><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>
@@ -179,24 +182,62 @@ function content_64b09f8c953b15_47684963 (Smarty_Internal_Template $_smarty_tpl)
 						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 						      <div class="card-body">
 						        <div class="billing-address-form">
-						        	<form name = "shipping" method= "POST" id= "shipping-form">
-						        		
+						        	<form name = "shipping" method= "POST" id= "order_details">
+						        		<?php if ((isset($_smarty_tpl->tpl_vars['failedCredentials']->value))) {?>
+										<p style="color:red; text-align:center;">Check your credentials</p>
 										<p>Address </p>
-                                        <p><input type="text" placeholder="country"></p>
-						        		<p><input type="text" placeholder="city"></p>
-						        		<p><input type="text" placeholder="district"></p>
-                                        <p><input type="text" placeholder="street"></p>
-						        		<p><input type="text" placeholder="number"></p>
-						        		<p><input type="text" placeholder="cap"></p>
+                                        <p><input type="text" placeholder="country" name ="country" value="<?php echo $_smarty_tpl->tpl_vars['failedCredentials']->value['country'];?>
+"></p>
+						        		<p><input type="text" placeholder="city" name ="city" value="<?php echo $_smarty_tpl->tpl_vars['failedCredentials']->value['city'];?>
+"></p>
+						        		<p><input type="text" placeholder="district" name ="district" value="<?php echo $_smarty_tpl->tpl_vars['failedCredentials']->value['district'];?>
+"></p>
+                                        <p><input type="text" placeholder="street" name ="street" value="<?php echo $_smarty_tpl->tpl_vars['failedCredentials']->value['street'];?>
+"></p>
+						        		<p><input type="text" placeholder="number" name ="number" value="<?php echo $_smarty_tpl->tpl_vars['failedCredentials']->value['number'];?>
+"></p>
+						        		<p><input type="text" placeholder="cap" name ="cap" value="<?php echo $_smarty_tpl->tpl_vars['failedCredentials']->value['cap'];?>
+"></p>
 
 						        	
 						        		<p>Card details </p>
 						        		
-										<p><input type="text" placeholder="cardNumber"></p>
-						        		<p><input type="email" placeholder="ownerName"></p>
-						        		<p><input type="text" placeholder="ownerLastName"></p>
-						        		<p><input type="text" placeholder="CCV"></p>
-										<p><input type="date" placeholder="expirationDate"></p>
+										<p><input type="text" placeholder="cardNumber" name ="cardNumber" value="<?php echo $_smarty_tpl->tpl_vars['failedCredentials']->value['cardNumber'];?>
+"></p>
+						        		<p><input type="text" placeholder="ownerName" name ="ownerName" value="<?php echo $_smarty_tpl->tpl_vars['failedCredentials']->value['ownerName'];?>
+"></p>
+						        		<p><input type="text" placeholder="ownerLastName" name ="ownerLastName" value="<?php echo $_smarty_tpl->tpl_vars['failedCredentials']->value['ownerLastName'];?>
+"></p>
+						        		<p><input type="text" placeholder="CCV" name ="ccv" value="<?php echo $_smarty_tpl->tpl_vars['failedCredentials']->value['ccv'];?>
+"></p>
+										<p>expiration date</p>
+										<p><input type="date" placeholder="expirationDate" name ="date" value="<?php echo $_smarty_tpl->tpl_vars['failedCredentials']->value['date'];?>
+"></p>
+
+
+										<?php } else { ?>
+										<p>Address </p>
+                                        <p><input type="text" placeholder="country" name ="country"></p>
+						        		<p><input type="text" placeholder="city" name ="city"></p>
+						        		<p><input type="text" placeholder="district" name ="district"></p>
+                                        <p><input type="text" placeholder="street" name ="street"></p>
+						        		<p><input type="text" placeholder="number" name ="number"></p>
+						        		<p><input type="text" placeholder="cap" name ="cap"></p>
+
+						        	
+						        		<p>Card details </p>
+						        		
+										<p><input type="text" placeholder="cardNumber" name ="cardNumber"></p>
+						        		<p><input type="text" placeholder="ownerName" name ="ownerName"></p>
+						        		<p><input type="text" placeholder="ownerLastName" name ="ownerLastName"></p>
+						        		<p><input type="text" placeholder="CCV" name ="ccv"></p>
+										<p>expiration date</p>
+										<p><input type="date" placeholder="expirationDate" name ="date"></p>
+										<?php }?>
+										<input type="hidden"  name ="price" value = "<?php echo $_smarty_tpl->tpl_vars['totalPrice']->value;?>
+"></p>
+
+										
 						        		
 						        	</form>
 						        </div>
@@ -276,7 +317,7 @@ for ($__section_recap_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_
 								</tr>
 							</tbody>
 						</table>
-						<input type="submit" form = "shipping-form" value = "Place Order" name = "shipping" style="margin-top:15px;">
+						<input type="submit" form = "order_details" value = "Place Order" name = "order_details" style="margin-top:15px;">
 					</div>
 				</div>
 			</div>
@@ -317,7 +358,7 @@ for ($__section_recap_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="">Home</a></li>
+							<li><a href="Home" >Home</a></li>
 							<li><a href="About">About</a></li>
 							<li><a href="Login">Login</a></li>
 							<li><a href="Sell">Sell</a></li>
@@ -329,10 +370,8 @@ for ($__section_recap_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
+						<input type="email" placeholder="Email">
+							<button ><i class="fas fa-paper-plane"></i></button>
 					</div>
 				</div>
 			</div>
@@ -402,6 +441,10 @@ for ($__section_recap_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_
 	<!-- main js -->
 	<?php echo '<script'; ?>
  src="Smarty/js/main.js"><?php echo '</script'; ?>
+>
+	<!-- modify js -->
+	<?php echo '<script'; ?>
+ src="Smarty/js/modify.js"><?php echo '</script'; ?>
 >
 
 </body>

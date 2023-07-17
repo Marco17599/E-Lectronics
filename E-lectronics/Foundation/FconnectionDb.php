@@ -6,7 +6,7 @@ class FconnectionDb {
     private static $instance;
     private  $pdo;
 
-    private $hostname = "127.0.0.1";
+    private $hostname = "localhost";
     private $dbname = "ELectronics";
     private $user = "root";
     private $pass = "Marco-manu35";

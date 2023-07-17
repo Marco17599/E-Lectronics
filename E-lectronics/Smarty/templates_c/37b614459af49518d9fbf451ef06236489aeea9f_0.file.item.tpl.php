@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-07-14 16:49:53
+/* Smarty version 4.3.1, created on 2023-07-17 10:27:33
   from '/home/marco/public_html/E-lectronics/Smarty/templates/item.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64b16091969fb4_07497364',
+  'unifunc' => 'content_64b4fb75d9a4e8_06835659',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '37b614459af49518d9fbf451ef06236489aeea9f' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/item.tpl',
-      1 => 1689346176,
+      1 => 1689582421,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,16 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64b16091969fb4_07497364 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64b4fb75d9a4e8_06835659 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-lectronics/Smarty/libs/plugins/modifier.count.php','function'=>'smarty_modifier_count',),));
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <base href="http://localhost/~marco/E-lectronics/"   >
-
+ <!--<base href="http://localhost/~marco/E-lectronics/"   >-->
+<base href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_SERVER['PHP_SELF'];?>
+">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -84,12 +86,18 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 					  <!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="">Home</a>
+								<li class="current-list-item"><a href="Home" >Home</a>
 								</li>
 
 								<li><a href="About">About</a></li>
 
-								<li><a href="Login">Login</a></li>
+                                 <li>
+								<?php if ($_smarty_tpl->tpl_vars['isIdentified']->value == true) {?>
+								<a href="Profile"><i class="fas fa-solid fa-user"></i></a>
+								<?php } else { ?>
+								<a href="Login">Login</a>
+								<?php }?>
+								</li>
 									
 								
 								
@@ -105,7 +113,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href=""><i class="fas fa-search"></i></a>
+						<a class="mobile-show search-bar-icon" href="Home" ><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>
@@ -124,15 +132,18 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 					<div class="search-bar">
 						<div class="search-bar-tablecell">
 							<h3>Search For:</h3>
-							<input type="text" placeholder="Keywords">
-							<button type="submit">Search <i class="fas fa-search"></i></button>
+							<input type="text" placeholder="Keywords" id="searchh">
+							
+							<button type="submit" onclick="Search()" >
+							Search <i class="fas fa-search"></i></button>
+							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- end search arewa -->
+	<!-- end search area -->
 	
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -188,7 +199,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 						</form>
 						</div>
 						<?php }?>
-							<p><strong>Category: </strong><?php echo $_smarty_tpl->tpl_vars['item']->value["category"];?>
+							<p style="margin-top:35px;"><strong>Category: </strong><?php echo $_smarty_tpl->tpl_vars['item']->value["category"];?>
 </p>
 						</div>
 						<h4>Seller : <span > <a href= "Reviews/<?php echo $_smarty_tpl->tpl_vars['seller']->value["userId"];?>
@@ -373,7 +384,7 @@ $ </p></a>
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="">Home</a></li>
+							<li><a href="Home" >Home</a></li>
 							<li><a href="About">About</a></li>
 							<li><a href="Login">Login</a></li>
 							<li><a href="Sell">Sell</a></li>
@@ -385,10 +396,8 @@ $ </p></a>
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
+						<input type="email" placeholder="Email">
+							<button ><i class="fas fa-paper-plane"></i></button>
 					</div>
 				</div>
 			</div>
@@ -458,6 +467,10 @@ $ </p></a>
 	<!-- main js -->
 	<?php echo '<script'; ?>
  src="Smarty/js/main.js"><?php echo '</script'; ?>
+>
+	<!-- modify js -->
+	<?php echo '<script'; ?>
+ src="Smarty/js/modify.js"><?php echo '</script'; ?>
 >
 
 </body>

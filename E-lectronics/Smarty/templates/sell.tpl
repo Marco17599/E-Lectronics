@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 
- <base href="http://localhost/~marco/E-lectronics/"   >
+ <!--<base href="http://localhost/~marco/E-lectronics/"   >-->
+ <base href="http://{$smarty.server.HTTP_HOST}{$smarty.server.PHP_SELF}">
 
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +11,7 @@
 	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
-	<title>Contact</title>
+	<title>Sell</title>
 
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="Smarty/images/favicon.png">
@@ -60,12 +61,14 @@
 					  <!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li ><a href="">Home</a>
+								<li ><a href="Home" >Home</a>
 								</li>
 
 								<li><a href="About">About</a></li>
 
-								<li><a href="Login">Login</a></li>
+								
+								<li><a href="Profile"><i class="fas fa-solid fa-user"></i></a></li>
+								
 									
 								
 								
@@ -81,7 +84,7 @@
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href=""><i class="fas fa-search"></i></a>
+						<a class="mobile-show search-bar-icon" href="Home" ><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>
@@ -140,7 +143,7 @@
 					</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
-						<form method="POST" action ="http://localhost/~marco/E-lectronics/Sell" name="form"  onsubmit="required()" enctype="multipart/form-data" >
+						<form method="POST"  name="form"   enctype="multipart/form-data" >
 							<p>
 								<input type="text" placeholder="Title" name="title" id="title">
 								
@@ -202,7 +205,7 @@
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="">Home</a></li>
+							<li><a href="Home" >Home</a></li>
 							<li><a href="About">About</a></li>
 							<li><a href="Login">Login</a></li>
 							<li><a href="Sell">Sell</a></li>
@@ -214,10 +217,8 @@
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
+						<input type="email" placeholder="Email">
+							<button ><i class="fas fa-paper-plane"></i></button>
 					</div>
 				</div>
 			</div>
@@ -225,28 +226,7 @@
 	</div>
 	<!-- end footer -->
 	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#"   ><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
+	
 	
 	<!-- jquery -->
 	<script src="Smarty/js/jquery-1.11.3.min.js"></script>
@@ -270,6 +250,8 @@
 	<script src="Smarty/js/form-validate.js"></script>
 	<!-- main js -->
 	<script src="Smarty/js/main.js"></script>
+	<!-- modify js -->
+	<script src="Smarty/js/modify.js"></script>
 	<!-- modify js -->
 	<script src="Smarty/js/modify.js"></script>
 

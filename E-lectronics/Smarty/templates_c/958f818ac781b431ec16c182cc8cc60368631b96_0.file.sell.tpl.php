@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-06-14 18:50:58
+/* Smarty version 4.3.1, created on 2023-07-17 17:14:45
   from '/home/marco/public_html/E-lectronics/Smarty/templates/sell.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_6489eff29f79c7_21549699',
+  'unifunc' => 'content_64b55ae559dcc6_86594997',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '958f818ac781b431ec16c182cc8cc60368631b96' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/sell.tpl',
-      1 => 1686761457,
+      1 => 1689604323,
       2 => 'file',
     ),
   ),
@@ -20,12 +20,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6489eff29f79c7_21549699 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64b55ae559dcc6_86594997 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
 
- <base href="http://localhost/~marco/E-lectronics/"   >
+ <!--<base href="http://localhost/~marco/E-lectronics/"   >-->
+ <base href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_SERVER['PHP_SELF'];?>
+">
 
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +36,7 @@ function content_6489eff29f79c7_21549699 (Smarty_Internal_Template $_smarty_tpl)
 	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
-	<title>Contact</title>
+	<title>Sell</title>
 
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="Smarty/images/favicon.png">
@@ -83,12 +86,14 @@ function content_6489eff29f79c7_21549699 (Smarty_Internal_Template $_smarty_tpl)
 					  <!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li ><a href="">Home</a>
+								<li ><a href="Home" >Home</a>
 								</li>
 
 								<li><a href="About">About</a></li>
 
-								<li><a href="Login">Login</a></li>
+								
+								<li><a href="Profile"><i class="fas fa-solid fa-user"></i></a></li>
+								
 									
 								
 								
@@ -104,7 +109,7 @@ function content_6489eff29f79c7_21549699 (Smarty_Internal_Template $_smarty_tpl)
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href=""><i class="fas fa-search"></i></a>
+						<a class="mobile-show search-bar-icon" href="Home" ><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>
@@ -163,7 +168,7 @@ function content_6489eff29f79c7_21549699 (Smarty_Internal_Template $_smarty_tpl)
 					</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
-						<form method="POST" action ="http://localhost/~marco/E-lectronics/Sell" name="form"  onsubmit="required()" enctype="multipart/form-data" >
+						<form method="POST"  name="form"   enctype="multipart/form-data" >
 							<p>
 								<input type="text" placeholder="Title" name="title" id="title">
 								
@@ -225,7 +230,7 @@ function content_6489eff29f79c7_21549699 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="">Home</a></li>
+							<li><a href="Home" >Home</a></li>
 							<li><a href="About">About</a></li>
 							<li><a href="Login">Login</a></li>
 							<li><a href="Sell">Sell</a></li>
@@ -237,10 +242,8 @@ function content_6489eff29f79c7_21549699 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
+						<input type="email" placeholder="Email">
+							<button ><i class="fas fa-paper-plane"></i></button>
 					</div>
 				</div>
 			</div>
@@ -248,28 +251,7 @@ function content_6489eff29f79c7_21549699 (Smarty_Internal_Template $_smarty_tpl)
 	</div>
 	<!-- end footer -->
 	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#"   ><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
+	
 	
 	<!-- jquery -->
 	<?php echo '<script'; ?>
@@ -314,6 +296,10 @@ function content_6489eff29f79c7_21549699 (Smarty_Internal_Template $_smarty_tpl)
 	<!-- main js -->
 	<?php echo '<script'; ?>
  src="Smarty/js/main.js"><?php echo '</script'; ?>
+>
+	<!-- modify js -->
+	<?php echo '<script'; ?>
+ src="Smarty/js/modify.js"><?php echo '</script'; ?>
 >
 	<!-- modify js -->
 	<?php echo '<script'; ?>

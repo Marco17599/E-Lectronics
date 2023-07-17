@@ -35,24 +35,5 @@ class Freview extends FcommunicationDb {
     }
     
 }
-//prova store 
-/*
-$temp1 = new Euser("1","marco","matt", "mamatt", "a@a.com", "aaaa", "33333333", "1999-05-17", null , [],[],[]);
-$temp2 = new Euser("2","manu","matt", "manutt", "b@b.com", "aaabba", "333333233", "1992-05-17", null , [],[],[]);
-$temp = new Ereview("0",2,"bello bello",$temp1, $temp2);
-$var = new Freview();
-$var->store("Review", $temp);*/
-
-//prova load
-/*
-$var = new Freview();
-$review = $var->load("Review", "reviewId", "1", "Ereview");
-print($review->getReviewed()->getFirstName());
-*/
-
-
-/*$var = new Freview();
-$array = $var->loadAllUserReviews("2");
-print_r($array);*/
 
 ?>

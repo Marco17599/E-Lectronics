@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <base href="http://localhost/~marco/E-lectronics/"   >
+ <!--<base href="http://localhost/~marco/E-lectronics/"   >-->
+ <base href="http://{$smarty.server.HTTP_HOST}{$smarty.server.PHP_SELF}">
 
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,16 +60,16 @@
 					  <!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li ><a href="">Home</a>
+								<li ><a href="Home" >Home</a>
 								</li>
 
 								<li><a href="About">About</a></li>
 
 								<li>
 								{if $isIdentified == true}
-								<a href="Profile"><i class="fas fa-solid fa-user"></i></a>
+								<li><a href="Profile"><i class="fas fa-solid fa-user"></i></a></li>
 								{else}
-								<a href="Login">Login</a>
+							<li>	<a href="Login">Login</a> </li>
 								{/if}
 								</li>
 									
@@ -88,7 +89,7 @@
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href=""><i class="fas fa-search"></i></a>
+						<a class="mobile-show search-bar-icon" href="Home" ><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>
@@ -156,24 +157,50 @@
 						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 						      <div class="card-body">
 						        <div class="billing-address-form">
-						        	<form name = "shipping" method= "POST" id= "shipping-form">
-						        		
+						        	<form name = "shipping" method= "POST" id= "order_details">
+						        		{if isset($failedCredentials)}
+										<p style="color:red; text-align:center;">Check your credentials</p>
 										<p>Address </p>
-                                        <p><input type="text" placeholder="country"></p>
-						        		<p><input type="text" placeholder="city"></p>
-						        		<p><input type="text" placeholder="district"></p>
-                                        <p><input type="text" placeholder="street"></p>
-						        		<p><input type="text" placeholder="number"></p>
-						        		<p><input type="text" placeholder="cap"></p>
+                                        <p><input type="text" placeholder="country" name ="country" value="{$failedCredentials['country']}"></p>
+						        		<p><input type="text" placeholder="city" name ="city" value="{$failedCredentials['city']}"></p>
+						        		<p><input type="text" placeholder="district" name ="district" value="{$failedCredentials['district']}"></p>
+                                        <p><input type="text" placeholder="street" name ="street" value="{$failedCredentials['street']}"></p>
+						        		<p><input type="text" placeholder="number" name ="number" value="{$failedCredentials['number']}"></p>
+						        		<p><input type="text" placeholder="cap" name ="cap" value="{$failedCredentials['cap']}"></p>
 
 						        	
 						        		<p>Card details </p>
 						        		
-										<p><input type="text" placeholder="cardNumber"></p>
-						        		<p><input type="email" placeholder="ownerName"></p>
-						        		<p><input type="text" placeholder="ownerLastName"></p>
-						        		<p><input type="text" placeholder="CCV"></p>
-										<p><input type="date" placeholder="expirationDate"></p>
+										<p><input type="text" placeholder="cardNumber" name ="cardNumber" value="{$failedCredentials['cardNumber']}"></p>
+						        		<p><input type="text" placeholder="ownerName" name ="ownerName" value="{$failedCredentials['ownerName']}"></p>
+						        		<p><input type="text" placeholder="ownerLastName" name ="ownerLastName" value="{$failedCredentials['ownerLastName']}"></p>
+						        		<p><input type="text" placeholder="CCV" name ="ccv" value="{$failedCredentials['ccv']}"></p>
+										<p>expiration date</p>
+										<p><input type="date" placeholder="expirationDate" name ="date" value="{$failedCredentials['date']}"></p>
+
+
+										{else}
+										<p>Address </p>
+                                        <p><input type="text" placeholder="country" name ="country"></p>
+						        		<p><input type="text" placeholder="city" name ="city"></p>
+						        		<p><input type="text" placeholder="district" name ="district"></p>
+                                        <p><input type="text" placeholder="street" name ="street"></p>
+						        		<p><input type="text" placeholder="number" name ="number"></p>
+						        		<p><input type="text" placeholder="cap" name ="cap"></p>
+
+						        	
+						        		<p>Card details </p>
+						        		
+										<p><input type="text" placeholder="cardNumber" name ="cardNumber"></p>
+						        		<p><input type="text" placeholder="ownerName" name ="ownerName"></p>
+						        		<p><input type="text" placeholder="ownerLastName" name ="ownerLastName"></p>
+						        		<p><input type="text" placeholder="CCV" name ="ccv"></p>
+										<p>expiration date</p>
+										<p><input type="date" placeholder="expirationDate" name ="date"></p>
+										{/if}
+										<input type="hidden"  name ="price" value = "{$totalPrice}"></p>
+
+										
 						        		
 						        	</form>
 						        </div>
@@ -239,7 +266,7 @@
 								</tr>
 							</tbody>
 						</table>
-						<input type="submit" form = "shipping-form" value = "Place Order" name = "shipping" style="margin-top:15px;">
+						<input type="submit" form = "order_details" value = "Place Order" name = "order_details" style="margin-top:15px;">
 					</div>
 				</div>
 			</div>
@@ -280,7 +307,7 @@
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="">Home</a></li>
+							<li><a href="Home" >Home</a></li>
 							<li><a href="About">About</a></li>
 							<li><a href="Login">Login</a></li>
 							<li><a href="Sell">Sell</a></li>
@@ -292,10 +319,8 @@
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
+						<input type="email" placeholder="Email">
+							<button ><i class="fas fa-paper-plane"></i></button>
 					</div>
 				</div>
 			</div>
@@ -303,28 +328,7 @@
 	</div>
 	<!-- end footer -->
 	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#"   ><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
+	
 	
 	<!-- jquery -->
 	<script src="Smarty/js/jquery-1.11.3.min.js"></script>
@@ -346,6 +350,8 @@
 	<script src="Smarty/js/sticker.js"></script>
 	<!-- main js -->
 	<script src="Smarty/js/main.js"></script>
+	<!-- modify js -->
+	<script src="Smarty/js/modify.js"></script>
 
 </body>
 </html>

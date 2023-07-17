@@ -13,7 +13,7 @@ class CfrontController
         }
         $this->resource = $urlAsArray[1];
         $this->params = $urlAsArray[2];
-        //print $this->resource;
+       
     }
     public static function getInstance(string $url): CfrontController
     {
@@ -26,7 +26,7 @@ class CfrontController
     }
 
     public function run() {
-        if($this->resource ==""){
+        if($this->resource =="" || $this->resource =="Home"  ){
          $real_controller = new CmanageItems();
          $request_method = $_SERVER['REQUEST_METHOD'];
         $request_method = strtolower($request_method);
@@ -39,18 +39,21 @@ class CfrontController
         $controller = "Cmanage" . $this->resource;
         $request_method = $_SERVER['REQUEST_METHOD'];
         $request_method = strtolower($request_method);
-        print ($request_method);
+       
         $method = $request_method . $this->resource;
         if (class_exists($controller, true)) {
             if (method_exists($controller, $method)) {
                 $real_controller = new $controller();
             } else {
-                header('HTTP/1.1 405 Method Not Allowed');
-               // exit;
+               
+                $view= new V404();
+                $view->displayError();
+               
             }
         } else {
-            header('HTTP/1.1 404 Not Foundd');
-            //exit;
+            $view= new V404();
+                $view->displayError();
+           
         }
         return $real_controller->$method($this->params); 
         }

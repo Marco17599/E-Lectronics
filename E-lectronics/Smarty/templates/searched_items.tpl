@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <base href="http://localhost/~marco/E-lectronics/"   >
-
+ 
+ <!--<base href="http://localhost/~marco/E-lectronics/"   >-->
+ <base href="http://{$smarty.server.HTTP_HOST}{$smarty.server.PHP_SELF}">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
-	<title>Check Out</title>
+	<title>Shop</title>
 
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="Smarty/images/favicon.png">
@@ -33,6 +34,9 @@
 	<!-- responsive -->
 	<link rel="stylesheet" href="Smarty/css/responsive.css">
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 	
@@ -43,6 +47,7 @@
         </div>
     </div>
     <!--PreLoader Ends-->
+	
 	<!-- header -->
 	<div class="top-header-area" id="sticker">
 		<div class="container">
@@ -63,18 +68,16 @@
 
 								<li><a href="About">About</a></li>
 
-								<li class="current-list-item">
-                                {if $isIdentified == true}
-                                 <a href="Profile"><i class="fas fa-solid fa-user"></i></a>
-                                 {else}
-                                <a href="Login">Login</a>
-                                {/if}
-                                </li>
+							{if $isIdentified == true}
+								<li><a href="Profile"><i class="fas fa-solid fa-user"></i></a></li>
+								{else}
+								<li><a href="Login">Login</a></li>
+								{/if}
 									
 								
 								
 								<li><a href="Sell">Sell</a></li>
-								<li ><a href="Items">Shop</a>
+								<li class="current-list-item"><a href="Items">Shop</a>
 									
 								</li>
 								<li>
@@ -95,7 +98,7 @@
 	</div>
 	<!-- end header -->
 
-	<!-- search area -->
+<!-- search area -->
 	<div class="search-area">
 		<div class="container">
 			<div class="row">
@@ -124,16 +127,8 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-                    {if $isIdentified == true}
-                    <p>Login succeded</p>
-						<h1>{$username}</h1>
-                        <a href="Home"  class="boxed-btn" style="margin-top:20px;">Back to home</a>
- 
-                    {else}
-						
-						<h1>Error</h1>
-                        <a href="Login" class="boxed-btn">Retry</a>
-                        {/if}
+						<p>Most used electronics items</p>
+						<h1>Shop</h1>
 					</div>
 				</div>
 			</div>
@@ -141,9 +136,141 @@
 	</div>
 	<!-- end breadcrumb section -->
 
-	
+	<!-- products -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
 
-   
+			<div class="row">
+                <div class="col-md-12">
+                   
+                </div>
+            </div>
+
+			
+
+			
+			{assign var =index value=0}
+		<div style = "height:100%; overflow-y:scroll; overflow-x:hidden" >
+		{if $items|@count == 0}
+			<h2 style="font-size:30px; color: red ;text-align:center" > No items found!</h2>
+		{else}
+
+        <h2 style="font-size:30px; color: black ;text-align:center" > Results for your search </h2>
+           {while $items|@count > $index}
+			
+			
+
+          
+			<div class="row product-lists" style="margin-top:70px;">
+			
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+					
+					<a href="Items/{$items[$index]->getItemId()}"> 
+						<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,{$items[$index]->getImage()}" style="width:250px; height:250px;" >
+						</div>
+						<h3>{$items[$index]->getItemName()}</h3>
+						<p class="product-price"><span>Price</span> {$items[$index]->getItemPrice()}$ </p> </a>
+						{if in_array($items[$index],$cartItems)}
+						<div style="height:50px;">
+						<p  class="cart-btn"><i class="fas fa-shopping-cart"></i> Already in cart</p>
+						</div>
+						{else}
+
+                        <div style="height:50px;">
+						<form name="add" METHOD="post" >
+						
+						
+						<INPUT TYPE="hidden" NAME="itemId"  VALUE="{$items[$index]->getItemId()}">
+						<p  class="cart-btn">  <input type="submit" value="Add to Cart" >  </p>
+						</form>
+						</div>
+						{/if}
+					</div>
+				</div>
+				
+
+				{assign var=index value=$index+1}
+                           {if $items|@count >$index}
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+						<a href="Items/{$items[$index]->getItemId()}"> 
+						<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,{$items[$index]->getImage()}" style="width:250px; height:250px;" >
+						</div>
+						<h3>{$items[$index]->getItemName()}</h3>
+						<p class="product-price"><span>Price</span> {$items[$index]->getItemPrice()}$ </p> </a>
+						{if in_array($items[$index],$cartItems)}
+						<div style="height:50px;">
+						<p  class="cart-btn"><i class="fas fa-shopping-cart"></i> Already in cart</p>
+						</div>
+						{else}
+
+                        <div style="height:50px;">
+						<form name="add" METHOD="post" >
+						
+						
+						<INPUT TYPE="hidden" NAME="itemId"  VALUE="{$items[$index]->getItemId()}">
+						<p  class="cart-btn">  <input type="submit" value="Add to Cart" >  </p>
+						</form>
+						</div>
+						{/if}
+					</div>
+				</div>
+
+				{assign var=index value=$index+1}
+				{/if}
+                           {if $items|@count >$index}
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+						<a href="Items/{$items[$index]->getItemId()}"> 
+						<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,{$items[$index]->getImage()}" style="width:250px; height:250px;" >
+						</div>
+						<h3>{$items[$index]->getItemName()}</h3>
+						<p class="product-price"><span>Price</span> {$items[$index]->getItemPrice()}$ </p> </a>
+						{if in_array($items[$index],$cartItems)}
+						<div style="height:50px;">
+						<p  class="cart-btn"><i class="fas fa-shopping-cart"></i> Already in cart</p>
+						</div>
+						{else}
+
+                        <div style="height:50px;">
+						<form name="add" METHOD="post" >
+						
+						
+						<INPUT TYPE="hidden" NAME="itemId"  VALUE="{$items[$index]->getItemId()}">
+						<p  class="cart-btn">  <input type="submit" value="Add to Cart" >  </p>
+						</form>
+						</div>
+						{/if}
+					</div>
+				</div>
+				{assign var=index value=$index+1}
+				{/if}
+				</div>
+				
+			
+                 {/while}
+				 {/if}
+ 
+
+			</div>
+				
+
+
+			
+			
+         </div>
+      </div>
+	  </div>
+
+
+
+	
+	<!-- end products -->
+
 	<!-- logo carousel -->
 	<div class="logo-carousel-section">
 		
@@ -189,8 +316,10 @@
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<input type="email" placeholder="Email">
+						
+							<input type="email" placeholder="Email">
 							<button ><i class="fas fa-paper-plane"></i></button>
+						
 					</div>
 				</div>
 			</div>
@@ -198,28 +327,6 @@
 	</div>
 	<!-- end footer -->
 	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#"   ><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
 	
 	<!-- jquery -->
 	<script src="Smarty/js/jquery-1.11.3.min.js"></script>
@@ -241,6 +348,8 @@
 	<script src="Smarty/js/sticker.js"></script>
 	<!-- main js -->
 	<script src="Smarty/js/main.js"></script>
+	<!-- modify js -->
+	<script src="Smarty/js/modify.js"></script>
 
 </body>
 </html>

@@ -1,5 +1,6 @@
 DROP DATABASE IF EXISTS ELectronics;
 CREATE DATABASE ELectronics;
+START TRANSACTION;
 Use ELectronics;
 
 CREATE TABLE `User` (
@@ -12,7 +13,7 @@ CREATE TABLE `User` (
     phoneNumber VARCHAR(15),
     birthDayDate Date NOT NULL,
     PRIMARY KEY(userId)  
-);
+)ENGINE=InnoDB;
 
 CREATE TABLE `CreditCard` (
     cardNumber VARCHAR(16) NOT NULL,
@@ -22,7 +23,7 @@ CREATE TABLE `CreditCard` (
     expirationDate Date NOT NULL,
     PRIMARY KEY (cardNumber)
     
-);
+)ENGINE=InnoDB;
 
 CREATE TABLE `Address` (
     addressId int NOT NULL AUTO_INCREMENT,
@@ -35,7 +36,7 @@ CREATE TABLE `Address` (
     userId int,
     PRIMARY KEY (addressId),
     CONSTRAINT FK_UserAddress FOREIGN KEY (userId) REFERENCES User (UserId)
-);
+)ENGINE=InnoDB;
 
 CREATE TABLE `PurchaseOrder` (
     purchaseOrderId int NOT NULL AUTO_INCREMENT, 
@@ -48,7 +49,7 @@ CREATE TABLE `PurchaseOrder` (
     CONSTRAINT FK_CreditCardPurchaseOrder FOREIGN KEY (cardNumber) REFERENCES CreditCard( cardNumber),
     CONSTRAINT FK_AddressPurchaseOrder FOREIGN KEY (addressId) REFERENCES Address (addressId) 
    
-);
+)ENGINE=InnoDB;
 
 CREATE TABLE `Item` (
     itemId int NOT NULL AUTO_INCREMENT,
@@ -65,7 +66,7 @@ CREATE TABLE `Item` (
     CONSTRAINT FK_SellerItem FOREIGN KEY (seller) REFERENCES User (userId),
     CONSTRAINT FK_BuyerItem FOREIGN KEY (buyer) REFERENCES User (userId),
     CONSTRAINT FK_PurchaseOrderItem FOREIGN KEY (purchaseOrderId) REFERENCES PurchaseOrder (purchaseOrderId)
-);
+)ENGINE=InnoDB;
 
 CREATE TABLE `Review` (
     reviewId int NOT NULL AUTO_INCREMENT,
@@ -76,7 +77,7 @@ CREATE TABLE `Review` (
     PRIMARY KEY (reviewId),
     CONSTRAINT FK_UserReview_1 FOREIGN KEY (reviewer) REFERENCES User (userId),
     CONSTRAINT FK_UserReview_2 FOREIGN KEY (reviewed) REFERENCES User (userId)
-); 
+)ENGINE=InnoDB; 
 
 
 

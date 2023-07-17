@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-06-10 19:23:45
+/* Smarty version 4.3.1, created on 2023-07-17 17:14:43
   from '/home/marco/public_html/E-lectronics/Smarty/templates/profile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_6484b1a1efbce5_25408707',
+  'unifunc' => 'content_64b55ae35b4947_72580538',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ee082d199dbb21fe15adae609387ff65711f6fa3' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/profile.tpl',
-      1 => 1686417825,
+      1 => 1689606777,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6484b1a1efbce5_25408707 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
+function content_64b55ae35b4947_72580538 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-lectronics/Smarty/libs/plugins/modifier.count.php','function'=>'smarty_modifier_count',),));
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
- <base href="http://localhost/~marco/E-lectronics/"   >
-
+ 
+<base href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_SERVER['PHP_SELF'];?>
+">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
-	<title>404!</title>
+	<title>Profile</title>
 
 	<!-- favicon -->
 	<link rel="shortcut icon" type="Smarty/image/png" href="es/favicon.png">
@@ -82,7 +86,7 @@ function content_6484b1a1efbce5_25408707 (Smarty_Internal_Template $_smarty_tpl)
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li ><a href="">Home</a>
+								<li ><a href="Home" >Home</a>
 								</li>
 
 								<li><a href="About">About</a></li>
@@ -103,7 +107,7 @@ function content_6484b1a1efbce5_25408707 (Smarty_Internal_Template $_smarty_tpl)
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href=""><i class="fas fa-search"></i></a>
+						<a class="mobile-show search-bar-icon" href="Home" ><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 								 
@@ -115,23 +119,26 @@ function content_6484b1a1efbce5_25408707 (Smarty_Internal_Template $_smarty_tpl)
 	<!-- end header -->
 
 		<!-- search area -->
-		<div class="search-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<span class="close-btn"><i class="fas fa-window-close"></i></span>
-						<div class="search-bar">
-							<div class="search-bar-tablecell">
-								<h3>Search For:</h3>
-								<input type="text" placeholder="Keywords">
-								<button type="submit">Search <i class="fas fa-search"></i></button>
-							</div>
+	<div class="search-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+					<div class="search-bar">
+						<div class="search-bar-tablecell">
+							<h3>Search For:</h3>
+							<input type="text" placeholder="Keywords" id="searchh">
+							
+							<button type="submit" onclick="Search()" >
+							Search <i class="fas fa-search"></i></button>
+							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- end search arewa -->
+	</div>
+	<!-- end search area -->
 		<!-- breadcrumb-section -->
 		<div class="breadcrumb-section breadcrumb-bg">
 			<div class="container">
@@ -141,27 +148,395 @@ function content_6484b1a1efbce5_25408707 (Smarty_Internal_Template $_smarty_tpl)
 							<p>Your Page</p>
 							<h1><?php echo $_smarty_tpl->tpl_vars['username']->value;?>
 </h1>
+							<form method = "post" name ="logout">  
+							<input type ="submit" name ="logout" value="logout" style ="margin-top:20px;"></a>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+
+
+		<!-- buyedItems -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+
+			<div class="row">
+                <div class="col-md-12">
+                    <div class="product-filters">
+                       
+                        <p style="font-size:30px; color:black; font-weight:bold; text-align:center;"> Buyed Articles</p>
+						
+                        
+
+						 
+
+
+						
+
+                        
+                    </div>
+                </div>
+            </div>
+
+			
+
+			
+			<?php $_smarty_tpl->_assignInScope('index', 0);?>
+		<div style = "height:100%; overflow-y:scroll; overflow-x:hidden" >
+		<?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['buyedItems']->value) == 0) {?>
+			<h2 style="font-size:30px; color: red ;text-align:center" > No items found!</h2>
+		<?php } else { ?>
+           <?php
+ while (smarty_modifier_count($_smarty_tpl->tpl_vars['buyedItems']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+			
+			
+
+          
+			<div class="row product-lists" >
+			
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+					
+					
+						<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['buyedItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
+						</div>
+						<h3><?php echo $_smarty_tpl->tpl_vars['buyedItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['buyedItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> 
+						
+						<div style="height:50px;">
+                        <p>seller : <?php echo $_smarty_tpl->tpl_vars['buyedItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getVenditore()->getUsername();?>
+</p>
+
+                        
+						</div>
+					</div>
+				</div>
+				
+
+				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
+                           <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['buyedItems']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+					
+					
+						<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['buyedItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
+						</div>
+						<h3><?php echo $_smarty_tpl->tpl_vars['buyedItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['buyedItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> 
+						
+						<div style="height:50px;">
+                      <p>seller : <?php echo $_smarty_tpl->tpl_vars['buyedItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getVenditore()->getUsername();?>
+</p>
+
+                        
+						</div>
+					</div>
+				</div>
+
+				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
+				<?php }?>
+                           <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['buyedItems']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+					
+					
+						<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['buyedItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
+						</div>
+						<h3><?php echo $_smarty_tpl->tpl_vars['buyedItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['buyedItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> 
+						
+						<div style="height:50px;">
+                        <p>seller : <?php echo $_smarty_tpl->tpl_vars['buyedItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getVenditore()->getUsername();?>
+</p>
+
+                        
+						
+					</div>
+				</div>
+				</div>
+				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
+				<?php }?>
+				</div>
+				
+			
+                 <?php }?>
+
+				 <?php }?>
+ 
+
+			</div>
+				
+
+
+			
+			
+         </div>
+      </div>
+	  
+	
+
+
+
+	
+	<!-- end buyedItems -->
+
+
+
+	<!-- soldItems -->
+	
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+
+			<div class="row">
+                <div class="col-md-12">
+                    <div class="product-filters">
+                       
+                        <p style="font-size:30px; color:black; font-weight:bold; text-align:center;"> Sold Articles</p>
+						
+                        
+
+						 
+
+
+						
+
+                        
+                    </div>
+                </div>
+            </div>
+
+			
+
+			
+			<?php $_smarty_tpl->_assignInScope('index', 0);?>
+		<div style = "height:100%; overflow-y:scroll; overflow-x:hidden" >
+		<?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['soldItems']->value) == 0) {?>
+			<h2 style="font-size:30px; color: red ;text-align:center" > No articles found!</h2>
+		<?php } else { ?>
+           <?php
+ while (smarty_modifier_count($_smarty_tpl->tpl_vars['soldItems']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+			
+			
+
+          
+			<div class="row product-lists" >
+			
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+					
+					
+						<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['soldItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
+						</div>
+						<h3><?php echo $_smarty_tpl->tpl_vars['soldItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['soldItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> 
+						
+						
+
+                        
+						
+					</div>
+				</div>
+				
+
+				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
+                           <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['soldItems']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+							<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['soldItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
+						</div>
+						<h3><?php echo $_smarty_tpl->tpl_vars['soldItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['soldItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> 
+					</div>
+				</div>
+
+				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
+				<?php }?>
+                           <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['soldItems']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+							<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['soldItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
+						</div>
+						<h3><?php echo $_smarty_tpl->tpl_vars['soldItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['soldItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> 
+					</div>
+				</div>
+				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
+				<?php }?>
+				</div>
+				
+			
+                 <?php }?>
+
+				 <?php }?>
+ 
+
+			</div>
+				
+
+
+			
+			
+         </div>
+      </div>
+	 </div>
+	 </div>
+	 
+
+
+
+	
+	<!-- end soldItems -->
+
+	<!-- sellingItems -->
+	
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+
+			<div class="row">
+                <div class="col-md-12">
+                    <div class="product-filters">
+                       
+                        <p style="font-size:30px; color:black; font-weight:bold; text-align:center;"> Selling Articles</p>
+						
+                        
+
+						 
+
+
+						
+
+                        
+                    </div>
+                </div>
+            </div>
+
+			
+
+			
+			<?php $_smarty_tpl->_assignInScope('index', 0);?>
+		<div style = "height:100%; overflow-y:scroll; overflow-x:hidden" >
+		<?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['sellingItems']->value) == 0) {?>
+			<h2 style="font-size:30px; color: red ;text-align:center" > No articles found!</h2>
+		<?php } else { ?>
+           <?php
+ while (smarty_modifier_count($_smarty_tpl->tpl_vars['sellingItems']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+			
+			
+
+          
+			<div class="row product-lists" >
+			
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+					
+					
+						<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['sellingItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
+						</div>
+						<h3><?php echo $_smarty_tpl->tpl_vars['sellingItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['sellingItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> 
+						
+						
+
+                        
+						
+					</div>
+				</div>
+				
+
+				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
+                           <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['sellingItems']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+						<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['sellingItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
+						</div>
+						<h3><?php echo $_smarty_tpl->tpl_vars['sellingItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['sellingItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> 
+						
+						
+					</div>
+				</div>
+
+				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
+				<?php }?>
+                           <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['sellingItems']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+						<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['sellingItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
+						</div>
+						<h3><?php echo $_smarty_tpl->tpl_vars['sellingItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['sellingItems']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> 
+						
+						
+					</div>
+				</div>
+				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
+				<?php }?>
+				</div>
+				
+			
+                 <?php }?>
+
+				 <?php }?>
+ 
+
+			</div>
+				
+
+
+			
+			
+         </div>
+      </div>
+	 </div>
+	 </div>
+	 
+
+
+
+	
+	<!-- end sellingItems -->
+
 		<!-- end breadcrumb section -->
-		<!-- error section -->
-		<div class="full-height-section error-section">
-			<div class="full-height-tablecell">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-8 offset-lg-2 text-center">
-							
-								<a href="" class="boxed-btn">Logout</a>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- end error section -->
+	
 		<!-- logo carousel -->
 		<div class="logo-carousel-section">
 			<div class="container">
@@ -197,7 +572,7 @@ function content_6484b1a1efbce5_25408707 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="">Home</a></li>
+							<li><a href="Home" >Home</a></li>
 							<li><a href="About">About</a></li>
 							<li><a href="Login">Login</a></li>
 							<li><a href="Sell">Sell</a></li>
@@ -209,10 +584,8 @@ function content_6484b1a1efbce5_25408707 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
+						<input type="email" placeholder="Email">
+							<button ><i class="fas fa-paper-plane"></i></button>
 					</div>
 				</div>
 			</div>
@@ -220,28 +593,7 @@ function content_6484b1a1efbce5_25408707 (Smarty_Internal_Template $_smarty_tpl)
 	</div>
 	<!-- end footer -->
 	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#"   ><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
+	
 	
 	<!-- jquery -->
 	<?php echo '<script'; ?>
@@ -283,7 +635,10 @@ function content_6484b1a1efbce5_25408707 (Smarty_Internal_Template $_smarty_tpl)
 	<?php echo '<script'; ?>
  src="Smarty/js/main.js"><?php echo '</script'; ?>
 >
-	
+	<!-- modify js -->
+	<?php echo '<script'; ?>
+ src="Smarty/js/modify.js"><?php echo '</script'; ?>
+>
 	</body>
 </html><?php }
 }

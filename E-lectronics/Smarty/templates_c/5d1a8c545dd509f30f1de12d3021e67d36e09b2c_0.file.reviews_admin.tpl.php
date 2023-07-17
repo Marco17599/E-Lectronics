@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-07-14 17:55:08
+/* Smarty version 4.3.1, created on 2023-07-17 16:28:31
   from '/home/marco/public_html/E-lectronics/Smarty/templates/reviews_admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64b16fdc5f8429_42410372',
+  'unifunc' => 'content_64b5500f062770_78354454',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5d1a8c545dd509f30f1de12d3021e67d36e09b2c' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/reviews_admin.tpl',
-      1 => 1689350103,
+      1 => 1689604096,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,16 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64b16fdc5f8429_42410372 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64b5500f062770_78354454 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-lectronics/Smarty/libs/plugins/modifier.count.php','function'=>'smarty_modifier_count',),));
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <base href="http://localhost/~marco/E-lectronics/"   >
+ <!--<base href="http://localhost/~marco/E-lectronics/"   >-->
+ <base href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_SERVER['PHP_SELF'];?>
+">
 
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,7 +37,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
-	<title>News</title>
+	<title>Reviews</title>
 
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="Smarty/images/favicon.png">
@@ -99,8 +102,13 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
 						<p>Seller reviews</p>
+						<?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['reviews']->value) == 0) {?>
+						<h1>No reviews found!</h1>
+						<?php } else { ?>
 						<h1><?php echo $_smarty_tpl->tpl_vars['reviews']->value[0]->getReviewed()->getUsername();?>
 </h1>
+						<?php }?>
+						
 					</div>
 				</div>
 			</div>
@@ -299,7 +307,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="">Home</a></li>
+							<li><a href="Home" >Home</a></li>
 							<li><a href="About">About</a></li>
 							<li><a href="Login">Login</a></li>
 							<li><a href="Sell">Sell</a></li>
@@ -311,10 +319,8 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
+						<input type="email" placeholder="Email">
+							<button ><i class="fas fa-paper-plane"></i></button>
 					</div>
 				</div>
 			</div>

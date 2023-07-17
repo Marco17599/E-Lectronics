@@ -3,6 +3,8 @@ class CmanageAdmin
 {
     public function getAdmin($params)
     {
+        $session = FsessionUtility::getInstance();
+        if($session::isLogged() && $session::getSavedElement("user")->getUsername() == "Admin"){
         $view = new Vadmin();
         $fItem = new Fitem();
         if($params == "") {
@@ -26,14 +28,18 @@ class CmanageAdmin
                 if(!empty($userReviews)){
                    $view->displaySellerAdmin($userReviews);
                 }else{
-                   print("nessuna recensione");
+                    $view->displaySellerAdmin([]);
         
                 }
                
             }
-               
-        }
         
+        }
+    }else {
+        $view = new V404();
+        $view->displayError();
+
+    }
        
     }
 
@@ -43,8 +49,8 @@ class CmanageAdmin
             $fItem = new Fitem();
             $deletingItem =  $fItem->load("Item" , "itemId" , $_POST['itemId'], "Eitem");
             $fItem->delete("Item" , $deletingItem);
-            header("Location: http://localhost/~marco/E-lectronics/Admin");
-             
+            header( "Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Admin"  );
+           
             exit;
 
         }elseif(isset($_POST['reviewId'])) {
@@ -52,8 +58,8 @@ class CmanageAdmin
             $deletingReview =  $fReview->load("Review" , "reviewId" , $_POST['reviewId'], "Ereview");
             $fReview->delete("Review" , $deletingReview);
            $index=  $deletingReview->getReviewed()->getUserId();
-            header("Location: http://localhost/~marco/E-lectronics/Admin/seller=$index");
-             
+           header( "Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Admin/seller=$index"  );
+          
             exit;
         }
     }

@@ -4,62 +4,75 @@ class CmanageCart
 {
     public function getCart($params)
     {
-        session_start();
-        //session_destroy();
+        $session = FsessionUtility::getInstance();
         if ($params == "") {
-            
-            if (isset($_SESSION["cart"]) ) {
-                $cart = unserialize($_SESSION["cart"]);
-               // print_r($cart);
-                $view = new Vcart();
-                $view->displayCart($cart);
-            } else {
-                $view = new Vcart();
-                $view->displayCart([]);
-                
-            }
+            if ($session::isLogged()) {
 
+
+
+
+                if ($session::isSetted("cart")) {
+                    $cart = unserialize($session::getSavedElement("cart"));
+
+                    $view = new Vcart();
+                    $view->displayCart($cart, true);
+                } else {
+                    $view = new Vcart();
+                    $view->displayCart([], true, );
+
+                }
+
+
+            } else {
+                header("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Login");
+                exit;
+
+            }
         } else {
             $view = new V404();
             $view->displayError();
 
         }
+
     }
 
-    public function postCart($params) {
-               session_start();
-               
-               if(isset($_SESSION["cart"])){
-                
-              
-               $cart = unserialize($_SESSION["cart"]);
-               //print_r($cart);
-               }
-           if(isset($_POST["remove"])) {
+    public function postCart($params)
+    {
+        $session = FsessionUtility::getInstance();
+
+        if ($session::isSetted("cart")) {
+
+
+            $cart = unserialize($session::getSavedElement("cart"));
+
+        }
+        if (isset($_POST["remove"])) {
             $fItem = new Fitem();
-            $item = $fItem->load("Item","itemId", $_POST['itemId'], "Eitem");
-               
-               
-               $deletingIndex = array_search($item,$cart);
-             
-              array_splice($cart,$deletingIndex,1);
-              if(sizeof($cart) == 0) {
-                unset($_SESSION["cart"]);
-              }else {
+            $item = $fItem->load("Item", "itemId", $_POST['itemId'], "Eitem");
 
-              
-               $serializedCart= serialize($cart);
-               
-               $_SESSION["cart"] = $serializedCart;
-              }
-            
-          
+
+            $deletingIndex = array_search($item, $cart);
+
+            array_splice($cart, $deletingIndex, 1);
+            if (sizeof($cart) == 0) {
+                $session::unsetSomething("cart");
+            } else {
+
+
+                $serializedCart = serialize($cart);
+                $session::saveSomething($serializedCart, "cart");
+
+            }
+
+
         }
 
-        if(isset($_POST["clear"])) {
-            unset($_SESSION["cart"]);
+        if (isset($_POST["clear"])) {
+            $session::unsetSomething("cart");
+
         }
-        header("Location: http://localhost/~marco/E-lectronics/Cart");
+        header("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Cart");
+
         exit;
     }
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-07-14 17:55:25
+/* Smarty version 4.3.1, created on 2023-07-17 16:19:55
   from '/home/marco/public_html/E-lectronics/Smarty/templates/item_admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64b16fed3757e6_62510191',
+  'unifunc' => 'content_64b54e0bd56b83_74650060',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2183869ed5e8c7c6048acf5de5505236461539f7' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/item_admin.tpl',
-      1 => 1689349101,
+      1 => 1689583011,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64b16fed3757e6_62510191 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64b54e0bd56b83_74650060 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
- <base href="http://localhost/~marco/E-lectronics/"   >
+ <!--<base href="http://localhost/~marco/E-lectronics/"   >-->
+ <base href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_SERVER['PHP_SELF'];?>
+">
 
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -143,7 +146,7 @@ function content_64b16fed3757e6_62510191 (Smarty_Internal_Template $_smarty_tpl)
 						</form>
 						</div>
 						
-							<p><strong>Category: </strong><?php echo $_smarty_tpl->tpl_vars['item']->value["category"];?>
+							<p style="margin-top:35px;"><strong>Category: </strong><?php echo $_smarty_tpl->tpl_vars['item']->value["category"];?>
 </p>
 						</div>
 						<h4>Seller : <span > <a href= "Admin/seller=<?php echo $_smarty_tpl->tpl_vars['seller']->value["userId"];?>
@@ -192,7 +195,7 @@ function content_64b16fed3757e6_62510191 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="">Home</a></li>
+							<li><a href="Home" >Home</a></li>
 							<li><a href="About">About</a></li>
 							<li><a href="Login">Login</a></li>
 							<li><a href="Sell">Sell</a></li>
@@ -204,10 +207,8 @@ function content_64b16fed3757e6_62510191 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
+						<input type="email" placeholder="Email">
+							<button ><i class="fas fa-paper-plane"></i></button>
 					</div>
 				</div>
 			</div>

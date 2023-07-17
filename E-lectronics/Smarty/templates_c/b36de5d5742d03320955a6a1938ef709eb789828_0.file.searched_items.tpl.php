@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-07-15 22:55:43
-  from '/home/marco/public_html/E-lectronics/Smarty/templates/reviews.tpl' */
+/* Smarty version 4.3.1, created on 2023-07-15 22:11:45
+  from '/home/marco/public_html/E-lectronics/Smarty/templates/searched_items.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64b307cf5ee146_18508688',
+  'unifunc' => 'content_64b2fd815804b4_10720194',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '377f4d0bd0d6c31724f954e4e67250788f354ed3' => 
+    'b36de5d5742d03320955a6a1938ef709eb789828' => 
     array (
-      0 => '/home/marco/public_html/E-lectronics/Smarty/templates/reviews.tpl',
-      1 => 1689454542,
+      0 => '/home/marco/public_html/E-lectronics/Smarty/templates/searched_items.tpl',
+      1 => 1689451904,
       2 => 'file',
     ),
   ),
@@ -20,21 +20,21 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64b307cf5ee146_18508688 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64b2fd815804b4_10720194 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-lectronics/Smarty/libs/plugins/modifier.count.php','function'=>'smarty_modifier_count',),));
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ 
  <base href="http://localhost/~marco/E-lectronics/"   >
-
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
-	<title>Reviews</title>
+	<title>Shop</title>
 
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="Smarty/images/favicon.png">
@@ -58,6 +58,13 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 	<!-- responsive -->
 	<link rel="stylesheet" href="Smarty/css/responsive.css">
 
+	<?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+
 </head>
 <body>
 	
@@ -80,8 +87,8 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 							<img src="Smarty/images/logo.png" alt="">
 						</div>
 						<!-- logo -->
-                 <!-- menu start -->
-					
+
+						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
 								<li ><a href="">Home</a>
@@ -89,18 +96,16 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 
 								<li><a href="About">About</a></li>
 
-<li>
-								<?php if ($_smarty_tpl->tpl_vars['isIdentified']->value == true) {?>
-								<a href="Profile"><i class="fas fa-solid fa-user"></i></a>
+							<?php if ($_smarty_tpl->tpl_vars['isIdentified']->value == true) {?>
+								<li><a href="Profile"><i class="fas fa-solid fa-user"></i></a></li>
 								<?php } else { ?>
-								<a href="Login">Login</a>
+								<li><a href="Login">Login</a></li>
 								<?php }?>
-								</li>
 									
 								
 								
 								<li><a href="Sell">Sell</a></li>
-								<li><a href="Items">Shop</a>
+								<li class="current-list-item"><a href="Items">Shop</a>
 									
 								</li>
 								<li>
@@ -121,7 +126,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 	</div>
 	<!-- end header -->
 
-	<!-- search area -->
+<!-- search area -->
 	<div class="search-area">
 		<div class="container">
 			<div class="row">
@@ -142,7 +147,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 		</div>
 	</div>
 	<!-- end search area -->
-								
+								 
 	
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -150,13 +155,8 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Seller reviews</p>
-						<?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['reviews']->value) == 0) {?>
-						<h1>No reviews found!</h1>
-						<?php } else { ?>
-						<h1><?php echo $_smarty_tpl->tpl_vars['reviews']->value[0]->getReviewed()->getUsername();?>
-</h1>
-						<?php }?>
+						<p>Most used electronics items</p>
+						<h1>Shop</h1>
 					</div>
 				</div>
 			</div>
@@ -164,159 +164,157 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 	</div>
 	<!-- end breadcrumb section -->
 
-	<!-- latest news -->
-	<div class="latest-news mt-150 mb-150">
+	<!-- products -->
+	<div class="product-section mt-150 mb-150">
 		<div class="container">
 
+			<div class="row">
+                <div class="col-md-12">
+                   
+                </div>
+            </div>
 
-
-		<?php $_smarty_tpl->_assignInScope('index', 0);?>
-		<?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['reviews']->value) == 0) {?>
 			
-		<?php } else { ?>
-		<h2 style="font-size:30px; text-align:center" >Reviews</h2>
+
+			
+			<?php $_smarty_tpl->_assignInScope('index', 0);?>
 		<div style = "height:100%; overflow-y:scroll; overflow-x:hidden" >
-		
+		<?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['items']->value) == 0) {?>
+			<h2 style="font-size:30px; color: red ;text-align:center" > No items found!</h2>
+		<?php } else { ?>
+
+        <h2 style="font-size:30px; color: black ;text-align:center" > Results for your search </h2>
            <?php
- while (smarty_modifier_count($_smarty_tpl->tpl_vars['reviews']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+ while (smarty_modifier_count($_smarty_tpl->tpl_vars['items']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+			
+			
 
           
-			<div class="row">
-
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-					<?php if ($_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getVote() <= 2) {?>
-						<div class="latest-news-bg red"></div>
-						<?php } elseif ($_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getVote() <= 3) {?>
-						<div class="latest-news-bg yellow"></div>
-						<?php } else { ?>
-						<div class="latest-news-bg green"></div>
-						<?php }?>
-						<div class="news-text-box">
-						
-						<?php $_smarty_tpl->_assignInScope('i', 0);?>
-						<?php
- while ($_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getVote() > $_smarty_tpl->tpl_vars['i']->value) {?>
-						<i class="fas fa-solid fa-star fa-beat"></i>
-						<?php $_smarty_tpl->_assignInScope('i', $_smarty_tpl->tpl_vars['i']->value+1);?>
-						<?php }?>
-
-							
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> <?php echo $_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getReviewer()->getUsername();?>
-</span>
-								
-							</p>
-							<div style = "height:90px; overflow-y:scroll; overflow-x:hidden" >
-							<p class="excerpt"><?php echo $_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getTextOfReview();?>
-</p>
-							</div>
-							
+			<div class="row product-lists" style="margin-top:70px;">
+			
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+					
+					<a href="Items/<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemId();?>
+"> 
+						<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
 						</div>
+						<h3><?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> </a>
+						<?php if (in_array($_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value],$_smarty_tpl->tpl_vars['cartItems']->value)) {?>
+						<div style="height:50px;">
+						<p  class="cart-btn"><i class="fas fa-shopping-cart"></i> Already in cart</p>
+						</div>
+						<?php } else { ?>
+
+                        <div style="height:50px;">
+						<form name="add" METHOD="post" >
+						
+						
+						<INPUT TYPE="hidden" NAME="itemId"  VALUE="<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemId();?>
+">
+						<p  class="cart-btn">  <input type="submit" value="Add to Cart" >  </p>
+						</form>
+						</div>
+						<?php }?>
 					</div>
 				</div>
+				
 
 				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
-                           <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['reviews']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<?php if ($_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getVote() <= 2) {?>
-						<div class="latest-news-bg red"></div>
-						<?php } elseif ($_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getVote() <= 3) {?>
-						<div class="latest-news-bg yellow"></div>
-						<?php } else { ?>
-						<div class="latest-news-bg green"></div>
-						<?php }?>
-						<div class="news-text-box">
-							<?php $_smarty_tpl->_assignInScope('i', 0);?>
-						<?php
- while ($_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getVote() > $_smarty_tpl->tpl_vars['i']->value) {?>
-						<i class="fas fa-solid fa-star fa-beat"></i>
-						<?php $_smarty_tpl->_assignInScope('i', $_smarty_tpl->tpl_vars['i']->value+1);?>
-						<?php }?>
-
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> <?php echo $_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getReviewer()->getUsername();?>
-</span>
-								
-							</p>
-								<div style = "height:90px; overflow-y:scroll; overflow-x:hidden" >
-							<p class="excerpt"><?php echo $_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getTextOfReview();?>
-</p>
-							</div>
+                           <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['items']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+						<a href="Items/<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemId();?>
+"> 
+						<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
 						</div>
+						<h3><?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> </a>
+						<?php if (in_array($_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value],$_smarty_tpl->tpl_vars['cartItems']->value)) {?>
+						<div style="height:50px;">
+						<p  class="cart-btn"><i class="fas fa-shopping-cart"></i> Already in cart</p>
+						</div>
+						<?php } else { ?>
+
+                        <div style="height:50px;">
+						<form name="add" METHOD="post" >
+						
+						
+						<INPUT TYPE="hidden" NAME="itemId"  VALUE="<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemId();?>
+">
+						<p  class="cart-btn">  <input type="submit" value="Add to Cart" >  </p>
+						</form>
+						</div>
+						<?php }?>
 					</div>
 				</div>
 
 				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
 				<?php }?>
-                           <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['reviews']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<?php if ($_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getVote() <= 2) {?>
-						<div class="latest-news-bg red"></div>
-						<?php } elseif ($_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getVote() <= 3) {?>
-						<div class="latest-news-bg yellow"></div>
-						<?php } else { ?>
-						<div class="latest-news-bg green"></div>
-						<?php }?>
-						<div class="news-text-box">
-
-						
-						
-						 
-							<?php $_smarty_tpl->_assignInScope('i', 0);?>
-						<?php
- while ($_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getVote() > $_smarty_tpl->tpl_vars['i']->value) {?>
-						<i class="fas fa-solid fa-star " ></i>
-						<?php $_smarty_tpl->_assignInScope('i', $_smarty_tpl->tpl_vars['i']->value+1);?>
-						<?php }?>
-
-							<p class="blog-meta">
-								
-								<span class="author"><i class="fas fa-user"></i> <?php echo $_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getReviewer()->getUsername();?>
-</span>
-							</p>
-								<div style = "height:90px; overflow-y:scroll; overflow-x:hidden" >
-							<p class="excerpt"><?php echo $_smarty_tpl->tpl_vars['reviews']->value[$_smarty_tpl->tpl_vars['index']->value]->getTextOfReview();?>
-</p>
-							</div>
-							
+                           <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['items']->value) > $_smarty_tpl->tpl_vars['index']->value) {?>
+				<div class="col-lg-4 col-md-6 text-center  ">
+					<div class="single-product-item">
+						<a href="Items/<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemId();?>
+"> 
+						<div class="product-image">
+							<img src="data:image/jpg;charset=utf8;base64,<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getImage();?>
+" style="width:250px; height:250px;" >
 						</div>
+						<h3><?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemName();?>
+</h3>
+						<p class="product-price"><span>Price</span> <?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemPrice();?>
+$ </p> </a>
+						<?php if (in_array($_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value],$_smarty_tpl->tpl_vars['cartItems']->value)) {?>
+						<div style="height:50px;">
+						<p  class="cart-btn"><i class="fas fa-shopping-cart"></i> Already in cart</p>
+						</div>
+						<?php } else { ?>
+
+                        <div style="height:50px;">
+						<form name="add" METHOD="post" >
+						
+						
+						<INPUT TYPE="hidden" NAME="itemId"  VALUE="<?php echo $_smarty_tpl->tpl_vars['items']->value[$_smarty_tpl->tpl_vars['index']->value]->getItemId();?>
+">
+						<p  class="cart-btn">  <input type="submit" value="Add to Cart" >  </p>
+						</form>
+						</div>
+						<?php }?>
 					</div>
 				</div>
 				<?php $_smarty_tpl->_assignInScope('index', $_smarty_tpl->tpl_vars['index']->value+1);?>
 				<?php }?>
+				</div>
+				
+			
+                 <?php }?>
+
+				 <?php }?>
+ 
 
 			</div>
-			<?php }?>
+				
+
 
 			
-
 			
-		</div>
+         </div>
+      </div>
+	  </div>
 
-		<?php }?>
-		<section id="review">
-		<div class="comment-template" style="margin-top:30px;">
-							<h4>Leave a review</h4>
-							<p>Review this seller if you have bought something from him</p>
-							<form method="POST" name="review"   >
-								<p>
-									Your rating<input type="number" name = "vote" min="1" max= "5" value= "1" style="margin-left:30px;">
-									
-								</p>
-								<p><textarea name="textOfReview" id="comment" cols="30" rows="10" placeholder="Your Message"></textarea></p>
-								<p style="color:red;">your message cannot be empty</p>
-								<p><input type="submit" value="Submit"></p>
-								
-							</form>
-						</div>
-						</section>
-						
-	</div>
-	</div>
-	<!-- end latest news -->
+
+
+	
+	<!-- end products -->
 
 	<!-- logo carousel -->
 	<div class="logo-carousel-section">
@@ -363,9 +361,10 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						submit"><i class="fas fa-paper-plane"></i></button>
-						<input type="email" placeholder="Email">
+						
+							<input type="email" placeholder="Email">
 							<button ><i class="fas fa-paper-plane"></i></button>
+						
 					</div>
 				</div>
 			</div>

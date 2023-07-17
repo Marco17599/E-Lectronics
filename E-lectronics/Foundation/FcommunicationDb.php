@@ -16,8 +16,9 @@ abstract class FcommunicationDb {
         }
         $sql= "INSERT INTO $table (" . $this->arrayToFieldsForSqlQueries($fields) . ") VALUES 
         (" . $this->arrayToValuesForSqlQueries($values) . ")"; 
+       // print($sql);
         $pdo->prepare($sql)->execute();
-        print($sql);
+      //  print($sql);
         
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 class Vcart {
-    public function displayCart(array $cartItems) {
+    public function displayCart(array $cartItems ,bool $isIdentified ) {
        
         $smarty = SmartyConfig::initialize();
         
@@ -13,6 +13,13 @@ class Vcart {
         $smarty->assign('cart' , $cartItems);
         $smarty->assign('totalPrice', $count);
         }
+        $smarty->assign('isIdentified', $isIdentified);
+        if($isIdentified){
+            
+          
+      
+        }
+        
         $smarty->display('cart.tpl');
 
     }
