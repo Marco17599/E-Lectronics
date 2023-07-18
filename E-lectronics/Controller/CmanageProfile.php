@@ -45,7 +45,8 @@ class CmanageProfile
     public function postProfile()
     {
 
-        if (isset($_POST['logout'])) {
+        $postHandler = UpostHandler::getInstance();
+        if ($postHandler::isPosted("logout")) {
             $session = FsessionUtility::getInstance();
             $session::logout();
 

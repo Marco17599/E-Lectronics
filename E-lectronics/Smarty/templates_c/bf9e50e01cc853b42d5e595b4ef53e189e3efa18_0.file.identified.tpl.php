@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-06-10 19:21:32
+/* Smarty version 4.3.1, created on 2023-07-18 04:00:56
   from '/home/marco/public_html/E-lectronics/Smarty/templates/identified.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_6484b11c52dae7_31163772',
+  'unifunc' => 'content_64b5f2584e2051_11896409',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bf9e50e01cc853b42d5e595b4ef53e189e3efa18' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/identified.tpl',
-      1 => 1686417688,
+      1 => 1689582420,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6484b11c52dae7_31163772 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64b5f2584e2051_11896409 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,7 +81,7 @@ function content_6484b11c52dae7_31163772 (Smarty_Internal_Template $_smarty_tpl)
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li ><a href="">Home</a>
+								<li ><a href="Home" >Home</a>
 								</li>
 
 								<li><a href="About">About</a></li>
@@ -108,7 +108,7 @@ function content_6484b11c52dae7_31163772 (Smarty_Internal_Template $_smarty_tpl)
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href=""><i class="fas fa-search"></i></a>
+						<a class="mobile-show search-bar-icon" href="Home" ><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>
@@ -151,7 +151,7 @@ function content_6484b11c52dae7_31163772 (Smarty_Internal_Template $_smarty_tpl)
                     <p>Login succeded</p>
 						<h1><?php echo $_smarty_tpl->tpl_vars['username']->value;?>
 </h1>
-                        <a href="" class="boxed-btn" style="margin-top:20px;">Back to home</a>
+                        <a href="Home"  class="boxed-btn" style="margin-top:20px;">Back to home</a>
  
                     <?php } else { ?>
 						
@@ -201,7 +201,7 @@ function content_6484b11c52dae7_31163772 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="">Home</a></li>
+							<li><a href="Home" >Home</a></li>
 							<li><a href="About">About</a></li>
 							<li><a href="Login">Login</a></li>
 							<li><a href="Sell">Sell</a></li>
@@ -213,10 +213,8 @@ function content_6484b11c52dae7_31163772 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
+						<input type="email" placeholder="Email">
+							<button ><i class="fas fa-paper-plane"></i></button>
 					</div>
 				</div>
 			</div>

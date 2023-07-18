@@ -37,16 +37,8 @@ class CmanageCheckout
         $session = FsessionUtility::getInstance();
         if ($session::isSetted("cart") && $session::isLogged()) {
             if (isset($_POST["order_details"])) {
-                $HasNotEmptyFields = true;
-
-                foreach ($_POST as $field) {
-                    if ($field == "") {
-                        $HasNotEmptyFields = false;
-                        break;
-
-                    }
-                }
-                if ($HasNotEmptyFields) {
+                $postHandler = UpostHandler::getInstance();
+                if (!$postHandler::hasEmptyFields()) {
 
                     $randomAddressId = rand(1, 999999);
                     $fAddress = new Faddress();
@@ -67,9 +59,19 @@ class CmanageCheckout
 
                     $items = unserialize($session::getSavedElement("cart"));
 
-                    $userAddress = new Eaddress($randomAddressId, $_POST['country'], $_POST['city'], $_POST['district'], $_POST['street'], $_POST['cap'], $_POST['number']);
+                    $userAddress = new Eaddress($randomAddressId,
+                                                $postHandler::returnValueFromField("country"),
+                                                $postHandler::returnValueFromField("city"),
+                                                $postHandler::returnValueFromField("district"),
+                                                $postHandler::returnValueFromField("street"), 
+                                                $postHandler::returnValueFromField("cap"), 
+                                                $postHandler::returnValueFromField("number"));
 
-                    $creditCard = new EcreditCard($_POST['cardNumber'], $_POST['ownerName'], $_POST['ownerLastName'], $_POST['ccv'], $_POST['date']);
+                    $creditCard = new EcreditCard($postHandler::returnValueFromField("cardNumber"), 
+                                                  $postHandler::returnValueFromField("ownerName"),
+                                                  $postHandler::returnValueFromField("ownerLastName"),
+                                                  $postHandler::returnValueFromField("ccv"),
+                                                  $postHandler::returnValueFromField("date"));
 
                     $purchaseOrder = new EpurchaseOrder($randomOrderId, 2, $session::getSavedElement("user"), $creditCard, $userAddress, $items);
 
@@ -85,17 +87,17 @@ class CmanageCheckout
 
                     }
                     $SavingArray = array(
-                        'country' => $_POST['country'],
-                        'city' => $_POST['city'],
-                        'district' => $_POST['district'],
-                        'street' => $_POST['street'],
-                        'cap' => $_POST['cap'],
-                        'number' => $_POST['number'],
-                        'cardNumber' => $_POST['cardNumber'],
-                        'ownerName' => $_POST['ownerName'],
-                        'ownerLastName' => $_POST['ownerLastName'],
-                        'ccv' => $_POST['ccv'],
-                        'date' => $_POST['date']
+                        'country' => $postHandler::returnValueFromField("country"),
+                        'city' =>  $postHandler::returnValueFromField("city"),
+                        'district' =>$postHandler::returnValueFromField("district"),
+                        'street' =>  $postHandler::returnValueFromField("street"), 
+                        'cap' =>  $postHandler::returnValueFromField("cap"), 
+                        'number' => $postHandler::returnValueFromField("number"),
+                        'cardNumber' => $postHandler::returnValueFromField("cardNumber"),
+                        'ownerName' => $postHandler::returnValueFromField("ownerName"),
+                        'ownerLastName' => $postHandler::returnValueFromField("ownerLastName"),
+                        'ccv' => $postHandler::returnValueFromField("ccv"),
+                        'date' => $postHandler::returnValueFromField("date")
                     );
 
                     $session::saveSomething($SavingArray, "order_details");

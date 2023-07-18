@@ -34,17 +34,11 @@ class CmanageReviews
         if ($session::isLogged()) {
 
             $fReview = new Freview();
+            $postHandler = UpostHandler::getInstance();
 
-            $HasNotEmptyFields = true;
-
-            foreach ($_POST as $field) {
-                if ($field == "") {
-                    $HasNotEmptyFields = false;
-                    break;
-
-                }
-            }
-            if ($HasNotEmptyFields == true) {
+            
+            
+            if (!$postHandler::hasEmptyFields()) {
 
 
 
@@ -52,7 +46,7 @@ class CmanageReviews
                 $user = $fUser->load("User", "userId", $params, "Euser");
                 $reviewer = $fUser->load("User", "UserId", $session::getSavedElement("user")->getUserId(), "Euser");
 
-                $review = new Ereview(0, $_POST['vote'], $_POST['textOfReview'], $reviewer, $user);
+                $review = new Ereview(0, $postHandler::returnValueFromField("vote"), $postHandler::returnValueFromField("textOfReview"), $reviewer, $user);
 
                 $fReview->store("Review", $review);
                 header("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Reviews/$params#");

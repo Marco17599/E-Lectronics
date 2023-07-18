@@ -46,9 +46,10 @@ class CmanageCart
             $cart = unserialize($session::getSavedElement("cart"));
 
         }
-        if (isset($_POST["remove"])) {
+        $postHandler = UpostHandler::getInstance();
+        if ($postHandler::isPosted("remove")) {
             $fItem = new Fitem();
-            $item = $fItem->load("Item", "itemId", $_POST['itemId'], "Eitem");
+            $item = $fItem->load("Item", "itemId", $postHandler::returnValueFromField("itemId"), "Eitem");
 
 
             $deletingIndex = array_search($item, $cart);
@@ -63,17 +64,25 @@ class CmanageCart
                 $session::saveSomething($serializedCart, "cart");
 
             }
-
-
-        }
-
-        if (isset($_POST["clear"])) {
-            $session::unsetSomething("cart");
-
-        }
-        header("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Cart");
+            header("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Cart");
 
         exit;
+
+
+        }
+
+        elseif ($postHandler::isPosted("clear")) {
+            $session::unsetSomething("cart");
+            header("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Cart");
+
+        exit;
+
+        }else {
+            header("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/error");
+
+        exit;
+        }
+        
     }
 
 

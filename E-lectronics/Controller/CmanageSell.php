@@ -31,16 +31,10 @@ class CmanageSell
 
         $user = $session::getSavedElement("user");
 
-        $HasNotEmptyFields = true;
+        $postHandler = UpostHandler::getInstance();
 
-        foreach ($_POST as $field) {
-            if ($field == "" || $field == 0.00) {
-                $HasNotEmptyFields = false;
-                break;
-
-            }
-        }
-        if ($HasNotEmptyFields == true) {
+        
+        if (!$postHandler::hasEmptyFields()) {
 
 
 
@@ -56,7 +50,11 @@ class CmanageSell
 
 
 
-                $item = new Eitem(0, $_POST['title'], $_POST['description'], $_POST['price'], false, EArticlesTypology::getCaseFromString($_POST['category']), $imgContent, $user);
+                $item = new Eitem(0, $postHandler::returnValueFromField("title"), 
+                                  $postHandler::returnValueFromField("description"),
+                                  $postHandler::returnValueFromField("price") , false,
+                                  EArticlesTypology::getCaseFromString($postHandler::returnValueFromField("category")),
+                                  $imgContent, $user);
 
                 $fitem = new Fitem();
 

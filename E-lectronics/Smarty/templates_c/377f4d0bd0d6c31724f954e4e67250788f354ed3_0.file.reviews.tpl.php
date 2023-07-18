@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-07-15 22:55:43
+/* Smarty version 4.3.1, created on 2023-07-18 04:27:22
   from '/home/marco/public_html/E-lectronics/Smarty/templates/reviews.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64b307cf5ee146_18508688',
+  'unifunc' => 'content_64b5f88a30ee10_98890817',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '377f4d0bd0d6c31724f954e4e67250788f354ed3' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/reviews.tpl',
-      1 => 1689454542,
+      1 => 1689604305,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,16 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64b307cf5ee146_18508688 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64b5f88a30ee10_98890817 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-lectronics/Smarty/libs/plugins/modifier.count.php','function'=>'smarty_modifier_count',),));
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <base href="http://localhost/~marco/E-lectronics/"   >
-
+ <!--<base href="http://localhost/~marco/E-lectronics/"   >-->
+<base href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_SERVER['PHP_SELF'];?>
+">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -84,7 +86,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 					
 						<nav class="main-menu">
 							<ul>
-								<li ><a href="">Home</a>
+								<li ><a href="Home" >Home</a>
 								</li>
 
 								<li><a href="About">About</a></li>
@@ -111,7 +113,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href=""><i class="fas fa-search"></i></a>
+						<a class="mobile-show search-bar-icon" href="Home" ><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>
@@ -351,7 +353,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="">Home</a></li>
+							<li><a href="Home" >Home</a></li>
 							<li><a href="About">About</a></li>
 							<li><a href="Login">Login</a></li>
 							<li><a href="Sell">Sell</a></li>
@@ -373,28 +375,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-le
 	</div>
 	<!-- end footer -->
 	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#"   ><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
+	
 	
 	<!-- jquery -->
 	<?php echo '<script'; ?>

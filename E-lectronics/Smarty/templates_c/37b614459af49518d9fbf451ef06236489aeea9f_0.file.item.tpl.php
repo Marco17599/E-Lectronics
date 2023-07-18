@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-07-17 10:27:33
+/* Smarty version 4.3.1, created on 2023-07-18 04:27:18
   from '/home/marco/public_html/E-lectronics/Smarty/templates/item.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64b4fb75d9a4e8_06835659',
+  'unifunc' => 'content_64b5f886a70a85_54276311',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '37b614459af49518d9fbf451ef06236489aeea9f' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/item.tpl',
-      1 => 1689582421,
+      1 => 1689604280,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64b4fb75d9a4e8_06835659 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64b5f886a70a85_54276311 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/marco/public_html/E-lectronics/Smarty/libs/plugins/modifier.count.php','function'=>'smarty_modifier_count',),));
 ?>
 <!DOCTYPE html>
@@ -405,28 +405,6 @@ $ </p></a>
 	</div>
 	<!-- end footer -->
 	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#"   ><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
 	
 	<!-- jquery -->
 	<?php echo '<script'; ?>

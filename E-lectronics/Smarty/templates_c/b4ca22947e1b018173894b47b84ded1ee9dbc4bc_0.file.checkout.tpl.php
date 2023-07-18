@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-07-17 10:35:40
+/* Smarty version 4.3.1, created on 2023-07-18 03:00:22
   from '/home/marco/public_html/E-lectronics/Smarty/templates/checkout.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64b4fd5c6737f1_44445141',
+  'unifunc' => 'content_64b5e426b27465_55388098',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b4ca22947e1b018173894b47b84ded1ee9dbc4bc' => 
     array (
       0 => '/home/marco/public_html/E-lectronics/Smarty/templates/checkout.tpl',
-      1 => 1689582418,
+      1 => 1689604252,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64b4fd5c6737f1_44445141 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64b5e426b27465_55388098 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -379,28 +379,7 @@ for ($__section_recap_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_
 	</div>
 	<!-- end footer -->
 	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#"   ><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#"   ><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
+	
 	
 	<!-- jquery -->
 	<?php echo '<script'; ?>

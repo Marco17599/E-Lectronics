@@ -45,17 +45,18 @@ class CmanageAdmin
 
 
     public function postAdmin($params) {
-        if (isset($_POST['itemId'])) {
+        $postHandler = UpostHandler::getInstance();
+        if ($postHandler::isPosted("itemId")) {
             $fItem = new Fitem();
-            $deletingItem =  $fItem->load("Item" , "itemId" , $_POST['itemId'], "Eitem");
+            $deletingItem =  $fItem->load("Item" , "itemId" , $postHandler::returnValueFromField("itemId"), "Eitem");
             $fItem->delete("Item" , $deletingItem);
             header( "Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Admin"  );
            
             exit;
 
-        }elseif(isset($_POST['reviewId'])) {
+        }elseif($postHandler::isPosted("reviewId")) {
             $fReview = new Freview();
-            $deletingReview =  $fReview->load("Review" , "reviewId" , $_POST['reviewId'], "Ereview");
+            $deletingReview =  $fReview->load("Review" , "reviewId" , $postHandler::returnValueFromField("reviewId"), "Ereview");
             $fReview->delete("Review" , $deletingReview);
            $index=  $deletingReview->getReviewed()->getUserId();
            header( "Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Admin/seller=$index"  );

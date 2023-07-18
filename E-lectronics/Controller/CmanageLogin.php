@@ -39,20 +39,25 @@ class CmanageLogin
 
         if ($params == "") {
             $session = FsessionUtility::getInstance();
-            if (isset($_POST['login'])) {
-                $username = $_POST['username'];
-                $password = $_POST['password'];
-                //print ($username);
-                //print($password);
+            $UpostHandler = UpostHandler::getInstance();
+            $key_enc = '0274'; //chiave per la crittografia
+            $met_enc = 'aes256'; //metodo per la crittografia: aes128, aes192, aes256, blowfish, cast-cbc
+            $iv = 'ma1R0ikDD56_hG12'; //una stringa random con 16 caratteri
+           
+            if ($UpostHandler::isPosted("login")) {
+                $username = $UpostHandler::returnValueFromField("username");
+                $password = $UpostHandler::returnValueFromField("password");
+                $pass_enc = openssl_encrypt($password, $met_enc, $key_enc, 0, $iv);
+               
                 $fUser = new Fuser();
-                $user = $fUser->loadAuthUser($username, $password);
-                $isIdentified = false;
+                $user = $fUser->loadAuthUser($username, $pass_enc);
+               
                 if ($user) {
-                    $isIdentified = true;
+                   
 
                     $session::saveSomething($user, "user");
 
-                    if ($_POST['username'] == "Admin") {
+                    if ($username == "Admin") {
                         header("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Admin");
 
                         exit;
@@ -68,18 +73,11 @@ class CmanageLogin
                     exit;
 
                 }
-            } elseif (isset($_POST['sign-up'])) {
+            } elseif ($UpostHandler::isPosted("sign-up")) {
 
-                $HasNotEmptyFields = true;
+                if(!$UpostHandler::hasEmptyFields())
 
-                foreach ($_POST as $field) {
-                    if ($field == "") {
-                        $HasNotEmptyFields = false;
-                        break;
-
-                    }
-                }
-                if ($HasNotEmptyFields) {
+                {
 
                     $randomAddressId = rand(1, 999999);
                     $fAddress = new Faddress();
@@ -97,17 +95,25 @@ class CmanageLogin
 
                     }
 
-                    $userAddress = new Eaddress($randomAddressId, $_POST['country'], $_POST['city'], $_POST['district'], $_POST['street'], $_POST['cap'], $_POST['number']);
-                    $tem3 = new Eaddress(0, "a", "b", "c", "d", "e", 11);
-                    $user = new Euser(
-                        $randomUserId, $_POST['firstname'], $_POST['lastname'], $_POST['rusername'], $_POST['email'],
-                        $_POST['rpassword'], $_POST['phone'], $_POST['date'],
-                        $userAddress,
-                        [],
-                        [],
-                        []
-                    );
-                    $user1 = new Euser("50", "manu", "matt", "marcolinoino", "b@b.com", "aaabba", "333333233", "1992-05-17", $tem3, [], [], []);
+                    $userAddress = new Eaddress($randomAddressId, $UpostHandler::returnValueFromField("country"),
+                                                $UpostHandler::returnValueFromField("city"),
+                                                $UpostHandler::returnValueFromField("district"),
+                                                $UpostHandler::returnValueFromField("street"), 
+                                                $UpostHandler::returnValueFromField("cap"), 
+                                                $UpostHandler::returnValueFromField("number"));
+
+                  
+
+                    $user = new Euser($randomUserId, $UpostHandler::returnValueFromField("firstname"),
+                                      $UpostHandler::returnValueFromField("lastname"),
+                                      $UpostHandler::returnValueFromField("rusername"), 
+                                      $UpostHandler::returnValueFromField("email"),
+                                      openssl_encrypt($UpostHandler::returnValueFromField("rpassword"), $met_enc, $key_enc, 0, $iv), 
+                                      $UpostHandler::returnValueFromField("phone"), 
+                                      $UpostHandler::returnValueFromField("date"),
+                                      $userAddress,[],[],[]);
+                    
+                   
 
                     $fUser->store("User", $user);
                     $session::saveSomething($user, "user");
@@ -122,19 +128,19 @@ class CmanageLogin
 
                     }
                     $savingArray = array(
-                        'firstname' => $_POST['firstname'],
-                        'lastname' => $_POST['lastname'],
-                        'rusername' => $_POST['rusername'],
-                        'email' => $_POST['email'],
-                        'rpassword' => $_POST['rpassword'],
-                        'phone' => $_POST['phone'],
-                        'date' => $_POST['date'],
-                        'country' => $_POST['country'],
-                        'city' => $_POST['city'],
-                        'district' => $_POST['district'],
-                        'street' => $_POST['street'],
-                        'cap' => $_POST['cap'],
-                        'number' => $_POST['number']
+                        'firstname' => $UpostHandler::returnValueFromField("firstname"),
+                        'lastname' => $UpostHandler::returnValueFromField("lastname"),
+                        'rusername' =>  $UpostHandler::returnValueFromField("rusername"),
+                        'email' => $UpostHandler::returnValueFromField("email"),
+                        'rpassword' => $UpostHandler::returnValueFromField("rpassword"), 
+                        'phone' => $UpostHandler::returnValueFromField("phone"), 
+                        'date' =>   $UpostHandler::returnValueFromField("date"),
+                        'country' => $UpostHandler::returnValueFromField("country"),
+                        'city' =>  $UpostHandler::returnValueFromField("city"),
+                        'district' =>$UpostHandler::returnValueFromField("district"),
+                        'street' =>  $UpostHandler::returnValueFromField("street"), 
+                        'cap' =>  $UpostHandler::returnValueFromField("cap"), 
+                        'number' => $UpostHandler::returnValueFromField("number")
                     );
                     $session::saveSomething($savingArray, "credentials");
 

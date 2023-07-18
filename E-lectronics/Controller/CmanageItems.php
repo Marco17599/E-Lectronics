@@ -78,18 +78,28 @@ class CmanageItems
             } else {
                 $cart = [];
             }
-            $itemId = $_POST['itemId'];
-            $fItem = new Fitem();
-            $item = $fItem->load("Item", "itemId", $itemId, "Eitem");
-            if (!in_array($item, $cart)) {
-                array_push($cart, $item);
+            $postHandler = UpostHandler::getInstance();
+            if( $postHandler::isPosted("itemId")){
+                $itemId = $postHandler::returnValueFromField("itemId");
+                $fItem = new Fitem();
+                $item = $fItem->load("Item", "itemId", $itemId, "Eitem");
+                if (!in_array($item, $cart)) {
+                    array_push($cart, $item);
+                }
+                $serializedCart = serialize($cart);
+                $session::saveSomething($serializedCart, "cart");
+    
+                header("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Cart");
+    
+                exit;
+                
             }
-            $serializedCart = serialize($cart);
-            $session::saveSomething($serializedCart, "cart");
-
-            header("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Cart");
-
+            header("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Error");
+    
             exit;
+            
+            
+           
         } else {
             header("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/Login");
 
